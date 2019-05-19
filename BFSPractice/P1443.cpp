@@ -11,7 +11,7 @@ bool visited[400][400];
 queue <positive> q;
 int main(){
   positive tmp;
-  int i,j,k=0;
+  int i,j;
   cin>>n>>m>>tmp.x>>tmp.y;
   memset(visited,false,sizeof(visited));
   memset(ans,-1,sizeof(ans));
@@ -19,7 +19,6 @@ int main(){
   ans[tmp.x][tmp.y]=0;
   q.push(tmp);
   while(!q.empty()){
-    k++;
     for(i=0;i<8;i++){
       for(j=0;j<8;j++){
         tmp.x=q.front().x+dx[i];tmp.y=q.front().y+dy[j];
