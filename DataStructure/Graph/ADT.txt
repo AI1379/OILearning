@@ -1,0 +1,7 @@
+ADT 图 (Graph)
+Data
+    顶点的有穷非空集合和边的集合
+Operation
+    CreateGraph(*G,V,VR):按照顶点集V和边弧集VR的定义构造图G
+    DestoryGraph(*G):图G存在则销毁
+    LocateVex(G,u):若图G存在顶点u，则
