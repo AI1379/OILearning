@@ -11,7 +11,6 @@ int f[110][110];
 int a[110],b[110],la,lb;
 int main(){
   int i,j;
-  char c;
   string sa,sb;
   cin>>la>>sa>>lb>>sb;
   for(i=1;i<=la;i++)
