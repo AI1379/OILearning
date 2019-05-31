@@ -5,11 +5,13 @@ int n,k;
 int main(){
 	int i,j;
 	sqrt2=sqrt(2);
+	freopen("suqare.in","r",stdin);
+	freopen("square.out","w",stdout);
 	cin>>n>>k;
 	k*=4;
 	now=(double)(n);
 	Ayumi=Ayumi+now;
-	for(i=1;i<=k;i++){
+	for(i=1;i<k;i++){
 		if(i%4==0){
 			now=now/sqrt2;
 		}
