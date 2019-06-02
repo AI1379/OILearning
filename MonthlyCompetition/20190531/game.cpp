@@ -90,8 +90,6 @@ bool operate(char c){
 int main(){
 	int x,y,v,i,j,k;
 	char c;
-	freopen("game.in","r",stdin);
-	freopen("game.out","w",stdout);
 	cin>>n;
 	for(k=0;k<n;k++){
 		cin>>x>>y>>v>>c;
