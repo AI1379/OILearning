@@ -1,40 +1,37 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 const int maxn=32010;
-const int maxm=70;
-int f[maxn],w[maxn],c[maxn],tmpw[maxm],tmpc[maxm],ai[maxm],n,m;
-bool annex[maxm];
+const int maxm=4900;
+int f[maxn],w[maxn],c[maxn],tmpw[maxm],tmpc[maxm],ai[maxm],n,m,tmpm;
 int main(){
-	int i,j,v,p,q;
+	int i,j,p,q;
 	cin>>n>>m;
-	memset(annex,false,sizeof(annex));
+	tmpm=m;
+	memset(ai,0,sizeof(ai));
 	for(i=1,j=1;i<=m;i++,j++){
-		cin>>v>>p>>q;
-		if(q!=0){
-			if(!annex[q]){
-				w[j]=tmpw[q]+v*p;
-				c[j]=tmpc[q]+v;
-				tmpw[i]=v*p;
-				tmpc[i]=v;
-				ai[q]=i;
-				annex[q]=true;
-			}
-			else{
-				w[j]=tmpw[q]+v*p;
-				c[j]=tmpc[q]+v;
-				j++;
-				w[j]=tmpw[q]+tmpw[ai[q]]+v*p;
-				c[j]=tmpc[q]+tmpc[ai[q]]+v;
-				n++;
-			}
+		cin>>tmpc[i]>>p>>q;
+		tmpw[i]=tmpc[i]*p;
+		if(q==0){
+			w[j]=tmpw[i];
+			c[j]=tmpc[i];
 		}
 		else{
-			tmpw[i]=v*p;
-			tmpc[i]=v;
-			w[j]=v*p;
-			c[j]=v;
+			if(ai[q]==0){
+				ai[q]=j;
+				w[j]=tmpw[q]+tmpw[i];
+				c[j]=tmpc[q]+tmpc[i];
+			}
+			else{
+				w[j]=tmpw[q]+tmpw[i];
+				c[j]=tmpc[q]+tmpc[i];
+				j++;
+				w[j]=w[ai[q]]+tmpw[i];
+				c[j]=c[ai[q]]+tmpc[i];
+				tmpm++;
+			}
 		}
 	}
+	m=tmpm;
 	for(i=1;i<=m;i++){
 		for(j=n;j>=c[i];j--){
 			f[j]=max(f[j],f[j-c[i]]+w[i]);
