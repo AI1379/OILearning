@@ -1,8 +1,11 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
+#include "mathematics.hpp"
 using namespace std;
-int mian(){
-  int ans=0,i;
-  for(i=1;i<=31;i++)ans+=(1<<i);
-  cout<<ans;
+int main(){
+  fraction a,b,ans;
+  a.gets();
+  b.gets();
+  ans=a+b;
+  ans.puts();
   return 0;
 }

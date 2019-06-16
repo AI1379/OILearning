@@ -7,28 +7,26 @@
 #ifndef _IOSTREAM_
 #include <iostream>
 #endif
+using namespace std;
 
 const int MaxLength=100;
-const int Infinity=
+const int Infinity=2147483647;//MaxInt
 
 int Greater(int a,int b){
   return a>b?a:b;
 }
-int swap(int* a,int* b){
-  (*a)^=(*b);
-  (*b)^=(*a);
-  (*a)^=(*b);
-  return ;
-}
 int gcd(const int x,const int y){//Maximum common divisor
-  int a,b,q,r;
-  if(a==1||b==1)return 1;
+  int a=x,b=y,r;
   if(a<b){
-    swap(&a,&b);
+    int tmp;
+    tmp=a;a=b;b=tmp;
   }
-  q=a/b;r=a%b;
-  if(r==0)return b;
-  else return gcd(b,r);
+  while(1){
+    r=a%b;
+    if(r==0)  return b;
+    else b=r,a=b;
+  }
+  return 1;
 }
 int lcm(const int x,const int y){//Least common multiple
   int g,a,b;
@@ -36,13 +34,17 @@ int lcm(const int x,const int y){//Least common multiple
   g=gcd(a,b);
   return a*b/g;
 }
-int power(const int base,const int exponent,const int modulus=0){
-
+int power(const int base,const int exponent,const int modulus=Infinity){
+  if(exponent==0)return 1;
+  int ans=power(base,exponent>>1,modulus);
+  ans=ans*ans%modulus;
+  if(exponent&1)ans=ans*base%modulus;
+  return ans;
 }
 
 class LongInt{
   private:
-    short number[Maxlength];
+    short number[MaxLength];
     int length;
     bool sign;
   public:
@@ -61,13 +63,13 @@ class LongInt{
     friend LongInt abs(const LongInt );
 };
 void LongInt::gets(){
-  string num;
+  std::string num;
   int i;
   memset(number,0,sizeof(number));
   std::cin>>num;
   length=num.length();
-  for(i=0;i<len;i++)
-    number[i]=(int)(num[len-i-1])-(int)('0');
+  for(i=0;i<length;i++)
+    number[i]=(int)(num[length-i-1])-(int)('0');
   return ;
 }
 void LongInt::puts(){
@@ -85,6 +87,13 @@ LongInt abs(const LongInt A){
   ans.length=A.length;
   ans.sign=true;
   return ans;
+}
+bool operator < (const LongInt A, const LongInt B){
+  if(!A.sign&&B.sign)return true;
+  if(A.length<B.length)return true;
+  int i;
+  for(i=A.length-1;i>=0;i--)if(A.number[i]<B.number[i])return true;
+  return false;
 }
 LongInt operator + (const LongInt A, const LongInt B){
   int i,j;
@@ -144,19 +153,23 @@ class fraction{
 void fraction::approximate(){
   int g;
   g=gcd(denominator,molecule);
-  denominator/=g;
-  molecule/=g;
+  denominator=denominator/g;
+  molecule=molecule/g;
   return ;
 }
 void fraction::gets(){
   //std::cout<<"enter denominator first\n";
-  std::cin>>denominator>>molecule;
-  approximate();
+  std::cin >> denominator >> molecule;
+  if(denominator==0)std::cout << "error";
+  int g;
+  g=gcd(denominator,molecule);
+  denominator=denominator/g;
+  molecule=molecule/g;
   return ;
 }
 void fraction::puts(){
-  std::cout<<' '<<molecule<<'/'<<denominator<<' ';
-  return 0;
+  std::cout << ' ' << molecule << '/' << denominator << ' ';
+  return ;
 }
 bool operator == (const fraction A, const fraction B){
   fraction x=A,y=B;
@@ -198,7 +211,7 @@ fraction operator * (const fraction A,const fraction B){
   ans.denominator=A.denominator*B.denominator;
   ans.molecule=A.molecule*B.molecule;
   ans.approximate();
-  return ;
+  return ans;
 }
 fraction operator / (const fraction A,const fraction B){
   fraction ans;
@@ -221,7 +234,7 @@ class IrrationalNumber{
   public:
     void gets();
     void puts();
-}
-class HighPreNum{
-
 };
+//class HighPreNum{
+
+//};
