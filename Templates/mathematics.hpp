@@ -24,7 +24,7 @@ int gcd(const int x,const int y){//Maximum common divisor
   while(1){
     r=a%b;
     if(r==0)  return b;
-    else b=r,a=b;
+    else a=b,b=r;
   }
   return 1;
 }
