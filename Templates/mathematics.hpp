@@ -143,6 +143,7 @@ class fraction{
     void gets();
     void puts();
     void approximate();
+    bool isinteger();
     friend fraction operator + (const fraction ,const fraction );
     friend fraction operator - (const fraction ,const fraction );
     friend fraction operator * (const fraction ,const fraction );
@@ -154,6 +155,7 @@ class fraction{
     friend bool operator >= (const fraction , const fraction );
     friend bool operator == (const fraction , const fraction );
     friend bool operator != (const fraction , const fraction );
+    friend int fraction2int (const fraction);
 };
 void fraction::approximate(){
   int g;
@@ -181,6 +183,10 @@ void fraction::puts(){
   else std::cout << ' ';
   std::cout << molecule << '/' << denominator << ' ';
   return ;
+}
+bool fraction::isinteger(){
+  if(molecule%denominator==0)return true;
+  else return false;
 }
 bool operator == (const fraction A, const fraction B){
   fraction x=A,y=B;
@@ -269,6 +275,15 @@ fraction operator - (const fraction A,const fraction B){
   fraction tmp=B;
   tmp.sign=(!B.sign);
   return A+tmp;
+}
+int fraction2int(fraction A){
+  if(!A.isinteger())return -1;
+  fraction tmp=A;
+  int ans;
+  tmp.approximate();
+  ans=tmp.molecule;
+  if(!tmp.sign)ans=-ans;
+  return ans;
 }
 
 //Part V: IrrationalNumber
