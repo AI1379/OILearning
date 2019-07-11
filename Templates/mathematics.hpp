@@ -9,9 +9,11 @@
 #endif
 using namespace std;
 
+//Part I: Const
 const int MaxLength=100;
 const int Infinity=2147483647;//MaxInt
 
+//Part II: int operation
 int Greater(int a,int b){
   return a>b?a:b;
 }
@@ -42,6 +44,7 @@ int power(const int base,const int exponent,const int modulus=Infinity){
   return ans;
 }
 
+//Part III: High Precision Integer
 class LongInt{
   private:
     short number[MaxLength];
@@ -130,6 +133,7 @@ LongInt operator + (const LongInt A, const LongInt B){
   return ans;
 }
 
+//Part IV: Fraction  Base: int
 class fraction{
   private:
     int denominator;
@@ -227,6 +231,7 @@ fraction operator + (const fraction A,const fraction B){
   return ans;
 }
 
+//Part V: IrrationalNumber
 class IrrationalNumber{
   private:
     int RootExponent,Base,multiple;
@@ -235,6 +240,8 @@ class IrrationalNumber{
     void gets();
     void puts();
 };
-//class HighPreNum{
+
+
+//class {
 
 //};
