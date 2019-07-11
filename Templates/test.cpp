@@ -5,7 +5,8 @@ int main(){
   fraction a,b,ans;
   a.gets();
   b.gets();
-  ans=a+b;
+  ans=a-b;
   ans.puts();
+  system("pause");
   return 0;
 }

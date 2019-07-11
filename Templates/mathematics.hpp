@@ -17,7 +17,7 @@ const int Infinity=2147483647;//MaxInt
 int Greater(int a,int b){
   return a>b?a:b;
 }
-int gcd(const int x,const int y){//Maximum common divisor
+int gcd(const int x,const int y){//Greatest common divisor
   int a=x,b=y,r;
   if(a<b){
     int tmp;
@@ -138,7 +138,7 @@ class fraction{
   private:
     int denominator;
     int molecule;
-    bool sign;
+    bool sign;//true:positive  false:negative
   public:
     void gets();
     void puts();
@@ -147,6 +147,7 @@ class fraction{
     friend fraction operator - (const fraction ,const fraction );
     friend fraction operator * (const fraction ,const fraction );
     friend fraction operator / (const fraction ,const fraction );
+    friend fraction operator - (const fraction );
     friend bool operator < (const fraction , const fraction );
     friend bool operator > (const fraction , const fraction );
     friend bool operator <= (const fraction , const fraction );
@@ -163,6 +164,10 @@ void fraction::approximate(){
 }
 void fraction::gets(){
   //std::cout<<"enter denominator first\n";
+  char c;
+  std::cin >> c;
+  if(c=='-')sign=false;
+  else sign=true;
   std::cin >> denominator >> molecule;
   if(denominator==0)std::cout << "error";
   int g;
@@ -172,7 +177,9 @@ void fraction::gets(){
   return ;
 }
 void fraction::puts(){
-  std::cout << ' ' << molecule << '/' << denominator << ' ';
+  if(!sign)std::cout << " -";
+  else std::cout << ' ';
+  std::cout << molecule << '/' << denominator << ' ';
   return ;
 }
 bool operator == (const fraction A, const fraction B){
@@ -210,11 +217,17 @@ bool operator > (const fraction A, const fraction B){
 bool operator >= (const fraction A, const fraction B){
   return A>B||A==B;
 }
+fraction operator - (const fraction A){
+  fraction tmp=A;
+  tmp.sign=!A.sign;
+  return tmp;
+}
 fraction operator * (const fraction A,const fraction B){
   fraction ans;
   ans.denominator=A.denominator*B.denominator;
   ans.molecule=A.molecule*B.molecule;
   ans.approximate();
+  ans.sign=A.sign^B.sign;
   return ans;
 }
 fraction operator / (const fraction A,const fraction B){
@@ -222,13 +235,40 @@ fraction operator / (const fraction A,const fraction B){
   ans.denominator=A.denominator*B.molecule;
   ans.molecule=A.molecule*B.denominator;
   ans.approximate();
+  ans.sign=A.sign^B.sign;
   return ans;
 }
 fraction operator + (const fraction A,const fraction B){
   fraction ans;
   ans.denominator=lcm(A.denominator,B.denominator);
-  ans.molecule=A.molecule*(ans.denominator/A.denominator)+B.molecule*(ans.denominator/B.denominator);
+  ans.sign=true;
+  if(!(A.sign^B.sign)){
+    ans.molecule=A.molecule*(ans.denominator/A.denominator)+B.molecule*(ans.denominator/B.denominator);
+    ans.sign=A.sign;
+  }
+  else{
+    if(A.sign==true){
+      ans.molecule=A.molecule*(ans.denominator/A.denominator)-B.molecule*(ans.denominator/B.denominator);
+      if(ans.molecule<0){
+        ans.molecule=-ans.molecule;
+        ans.sign=false;
+      }
+    }
+    else{
+      ans.molecule=B.molecule*(ans.denominator/B.denominator)-A.molecule*(ans.denominator/A.denominator);
+      if(ans.molecule<0){
+        ans.molecule=-ans.molecule;
+        ans.sign=false;
+      }
+    }
+  }
+  ans.approximate();
   return ans;
+}
+fraction operator - (const fraction A,const fraction B){
+  fraction tmp=B;
+  tmp.sign=(!B.sign);
+  return A+tmp;
 }
 
 //Part V: IrrationalNumber
