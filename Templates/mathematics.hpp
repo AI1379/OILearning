@@ -7,13 +7,20 @@
 #ifndef _IOSTREAM_
 #include <iostream>
 #endif
+#ifndef _VECTOR_
+#include <vector>
+#endif
+#ifndef _MAP_
+#include <map>
+#endif
 using namespace std;
 
-//Part I: Const
+//Part I: Constant & Variable
 const int MaxLength=100;
 const int Infinity=2147483647;//MaxInt
 const int Maxn=300001;
 vector<int> PrimeList;
+map<int,bool> PrimeList_Visited;
 
 //Part II: int operation
 int Greater(int a,int b){
@@ -46,17 +53,20 @@ int power(const int base,const int exponent,const int modulus=Infinity){
   return ans;
 }
 int primelist(const int n){
-  int i,j,primenum;
-  bool visited[Maxn];
-  memset(visited,false,sizeof(visited));
-  for(i=2;i<n;i++){
-    if(!visited[i]) prime[primenum++]=i;
-    for(j=0;j<primenum&&i*prime[j]<n;j++){
-      visited[i*prime[j]]=1;
-      if(i%prime[j]==0) break;
+  int i,j,NumOfPrime;
+  for(i=1;i<=n;i++)
+    PrimeList_Visited.insert(make_pair(i,false));
+  for(i=2;i<=n;i++){
+    if(!PrimeList_Visited[i])
+      PrimeList.push_back(i);
+    NumOfPrime=PrimeList.size();
+    for(j=0;j<NumOfPrime && i*PrimeList[j]<n;j++){
+      PrimeList_Visited[i*PrimeList[j]]=true;
+      if(i%PrimeList[j]==0)
+        break;
     }
   }
-  return primenum;
+  return NumOfPrime;
 }
 
 //Part III: High Precision Integer

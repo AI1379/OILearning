@@ -25,8 +25,8 @@ int main(){
   int prime[Maxn];
   int n,num;
   cin>>n;
-  num=Prime(n);
-  for(int i=0;i<num;i++)cout<<prime[i]<<' ';
+  num=primelist(n);
+  for(int i=0;i<num;i++)cout<<PrimeList[i]<<' ';
   system("pause");
   return 0;
 }
