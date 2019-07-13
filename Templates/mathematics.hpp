@@ -13,6 +13,9 @@
 #ifndef _MAP_
 #include <map>
 #endif
+#ifndef _CMATH_
+#include <cmath>
+#endif
 using namespace std;
 
 //Part I: Constant & Variable
@@ -51,6 +54,22 @@ int power(const int base,const int exponent,const int modulus=Infinity){
   ans=ans*ans%modulus;
   if(exponent&1)ans=ans*base%modulus;
   return ans;
+}
+double power(const double base,const int exponent){
+  int i;
+  double ans=1.00;
+  for(i=0;i<exponent;i++)
+    ans=ans*base;
+  return ans;
+}
+double root(const int base,const int exponent,const double precision=0.001){
+  double left=0.00,right=(double)(base),mid=(left+right)/2.00;
+  while(fabs(power(mid,exponent)-base)>precision){
+    mid=(left+right)/2.00;
+    if(power(mid,exponent)-base<=0)left=mid;
+    else right=mid;
+  }
+  return left;
 }
 int primelist(const int n){
   int i,j,NumOfPrime;
