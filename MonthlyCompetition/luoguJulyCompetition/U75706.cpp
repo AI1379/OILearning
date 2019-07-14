@@ -4,9 +4,11 @@ const int MAXL=1000000;
 int fish[MAXL],cnt;
 int main(){
 	int n,i,j,k,ans=0;
-	int f[1000][1000];
+	vector< vector<int> >f;
 	cin>>n;
-	memset(f,0,sizeof(f));
+	f.resize(n);
+	for(i=0;i<n;i++)
+		f[i].resize(n);
 	for(i=0;i<n;i++) cin>>fish[i];
 	for(i=0;i<n-1;i++)
 		if(fish[i]>fish[i+1])
@@ -18,7 +20,7 @@ int main(){
 				if(fish[i]<fish[i+j])
 					cnt++;
 			}
-			f[i][i+k-1]=f[i+1][i+k-1]+cnt;
+			f[i][i+k]=f[i+1][i+k]+cnt;
 		}
 	}
 	for(i=0;i<n;i++)
