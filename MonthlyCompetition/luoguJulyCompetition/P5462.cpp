@@ -1,31 +1,21 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-int main(){
-    int tmp,i,n,maxx=0;
-    queue<int>q;
-    vector<int>x;
-    vector<int>::iterator it,address;
+int n,a[100001],k[100001],x[100001],i;
+int main()
+{
     cin>>n;
-    for(i=0;i<n;i++){
-        cin>>tmp;
-        x.push_back(tmp);
+    for(i=1;i<=n;i++){
+        cin>>a[i];
+        k[a[i-1]]=a[i];
+        x[a[i]]=a[i-1];
     }
-    for(i=1;i<n/2;i++){
-        for(it=x.begin();it!=x.end();it++){
-            if(*it>=maxx&&it!=x.end()-1){
-                maxx=*it;
-                address=it;
-            }
+    for(i=n;i>=1;i--){
+        if(k[i]){
+            cout<<i<<' '<<k[i]<<' ';
+            k[x[i]]=k[k[i]];
+            x[k[x[i]]]=x[i];
+            k[k[i]]=0;
         }
-        q.push(*it);
-        q.push(*(it+1));
-        x.erase(it);
-        x.erase(it);
     }
-    while(!q.empty()){
-        cout<<q.front();
-        q.pop();
-    }
-    system("pause");
     return 0;
 }
