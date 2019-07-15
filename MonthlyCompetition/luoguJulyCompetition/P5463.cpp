@@ -22,6 +22,6 @@ int main(){
 		}
 	}
 	cout<<ans;
-	system("pause");
+//	system("pause");
 	return 0;
 }
