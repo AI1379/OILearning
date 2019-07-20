@@ -1,0 +1,3795 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)https://www.jianshu.com/p/497843e403b4 -->
+<html><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+
+  <!-- Start of Baidu Transcode -->
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="MobileOptimized" content="width">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="mobile-agent" content="format=html5;url=https://www.jianshu.com/p/497843e403b4">
+  <!-- End of Baidu Transcode -->
+
+    <meta name="description" content="STL(标准模板库)，是目前C++内置支持的library。它的底层利用了C++类模板和函数模板的机制，由三大部分组成：容器、算法和迭代器。 目前STL有六大组件 容器 container 算法 algorthm 迭代器 iterator 仿函数 function object 适配器 adaptor 空间配置器 allocator 下面，我们会一一进行介绍。 STL初探 容器是STL中很重...">
+
+  <meta name="360-site-verification" content="604a14b53c6b871206001285921e81d8">
+  <meta property="wb:webmaster" content="294ec9de89e7fadb">
+  <meta property="qc:admins" content="104102651453316562112116375">
+  <meta property="qc:admins" content="11635613706305617">
+  <meta property="qc:admins" content="1163561616621163056375">
+  <meta name="google-site-verification" content="cV4-qkUJZR6gmFeajx_UyPe47GW9vY6cnCrYtCHYNh4">
+  <meta name="google-site-verification" content="HF7lfF8YEGs1qtCE-kPml8Z469e2RHhGajy6JPVy5XI">
+  <meta http-equiv="mobile-agent" content="format=html5; url=https://www.jianshu.com/p/497843e403b4">
+
+  <!-- Apple -->
+  <meta name="apple-mobile-web-app-title" content="简书">
+
+    <!--  Meta for Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=888237539, app-argument=jianshu://notes/17744708">
+  <!-- End -->
+
+  <!--  Meta for Twitter Card -->
+  <meta content="summary" property="twitter:card">
+  <meta content="@jianshucom" property="twitter:site">
+  <meta content="C++进阶-STL容器，你看我就够了" property="twitter:title">
+  <meta content="STL(标准模板库)，是目前C++内置支持的library。它的底层利用了C++类模板和函数模板的机制，由三大部分组成：容器、算法和迭代器。 目前STL有六大组件 容器 co..." property="twitter:description">
+  <meta content="https://www.jianshu.com/p/497843e403b4" property="twitter:url">
+  <!-- End -->
+
+  <!--  Meta for OpenGraph -->
+  <meta property="fb:app_id" content="865829053512461">
+  <meta property="og:site_name" content="简书">
+  <meta property="og:title" content="C++进阶-STL容器，你看我就够了">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.jianshu.com/p/497843e403b4">
+  <meta property="og:description" content="STL(标准模板库)，是目前C++内置支持的library。它的底层利用了C++类模板和函数模板的机制，由三大部分组成：容器、算法和迭代器。 目前STL有六大组件 容器 container 算法...">
+  <!-- End -->
+
+  <!--  Meta for Facebook Applinks -->
+  <meta property="al:ios:url" content="jianshu://notes/17744708">
+  <meta property="al:ios:app_store_id" content="888237539">
+  <meta property="al:ios:app_name" content="简书">
+
+  <meta property="al:android:url" content="jianshu://notes/17744708">
+  <meta property="al:android:package" content="com.jianshu.haruki">
+  <meta property="al:android:app_name" content="简书">
+  <!-- End -->
+
+
+    <title>C++进阶-STL容器，你看我就够了 - 简书</title>
+
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="SzXLFCWec8G2RvqGqNQBevOeVtO8Zm/SulDPamurcyV7qrRaXSUt1wH/0Pt8gkgVDwUIhU3LvRDffMMgntK07Q==">
+
+  <link rel="stylesheet" media="all" href="./C++进阶-STL容器，你看我就够了 - 简书_files/web-30728a1164102859481d.css">
+  
+  <link rel="stylesheet" media="all" href="./C++进阶-STL容器，你看我就够了 - 简书_files/entry-aa75deb505b1b600256a.css">
+
+  <link href="https://cdn2.jianshu.io/assets/favicons/favicon-e743bfb1821442341c3ab15bdbe804f7ad97676bd07a770ccc9483473aa76f06.ico" rel="shortcut icon" type="image/x-icon">
+      <link rel="apple-touch-icon-precomposed" href="https://cdn2.jianshu.io/assets/apple-touch-icons/57-a6f1f1ee62ace44f6dc2f6a08575abd3c3b163288881c78dd8d75247682a4b27.png" sizes="57x57">
+      <link rel="apple-touch-icon-precomposed" href="https://cdn2.jianshu.io/assets/apple-touch-icons/72-fb9834bcfce738fd7b9c5e31363e79443e09a81a8e931170b58bc815387c1562.png" sizes="72x72">
+      <link rel="apple-touch-icon-precomposed" href="https://cdn2.jianshu.io/assets/apple-touch-icons/76-49d88e539ff2489475d603994988d871219141ecaa0b1a7a9a1914f4fe3182d6.png" sizes="76x76">
+      <link rel="apple-touch-icon-precomposed" href="https://cdn2.jianshu.io/assets/apple-touch-icons/114-24252fe693524ed3a9d0905e49bff3cbd0228f25a320aa09053c2ebb4955de97.png" sizes="114x114">
+      <link rel="apple-touch-icon-precomposed" href="https://cdn2.jianshu.io/assets/apple-touch-icons/120-1bb7371f5e87f93ce780a5f1a05ff1b176828ee0d1d130e768575918a2e05834.png" sizes="120x120">
+      <link rel="apple-touch-icon-precomposed" href="https://cdn2.jianshu.io/assets/apple-touch-icons/152-bf209460fc1c17bfd3e2b84c8e758bc11ca3e570fd411c3bbd84149b97453b99.png" sizes="152x152">
+
+  <!-- Start of 访问统计 -->
+    <script src="./C++进阶-STL容器，你看我就够了 - 简书_files/push.js.下载"></script><script src="./C++进阶-STL容器，你看我就够了 - 简书_files/hm.js.下载"></script><script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?0c0e9d9b1e7d617b3e6842e85b9fb068";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+  <!-- End of 访问统计 -->
+<style type="text/css">@charset "UTF-8";.image-package .image-container .image-view-error:after,.image-package .image-container .image-view-maintain:after{position:absolute;top:50%;left:50%;width:100%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);color:#888;font-size:14px}.image-package .image-container{position:relative;z-index:2;background-color:#eee;-webkit-transition:background-color .1s linear;-o-transition:background-color .1s linear;transition:background-color .1s linear;margin:0 auto}body.reader-night-mode .image-package .image-container{background-color:#545454}.image-package .image-container-fill{z-index:1}.image-package .image-container .image-view{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden}.image-package .image-container .image-view-error:after{content:"图片获取失败，请点击重试"}.image-package .image-container .image-view-maintain:after{content:"系统维护中，图片暂时无法加载"}.image-package .image-container .image-view img.image-loading{opacity:.3}.image-package .image-container .image-view img{-webkit-transition:all .15s linear;-o-transition:all .15s linear;transition:all .15s linear;z-index:2;opacity:1}</style><style type="text/css">fieldset[disabled] .multiselect {
+  pointer-events: none;
+}
+
+.multiselect__spinner {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  width: 48px;
+  height: 35px;
+  background: #fff;
+  display: block;
+}
+
+.multiselect__spinner:after,
+.multiselect__spinner:before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  border-color: #41b883 transparent transparent;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: 0 0 0 1px transparent;
+}
+
+.multiselect__spinner:before {
+  animation: a 2.4s cubic-bezier(.41,.26,.2,.62);
+  animation-iteration-count: infinite;
+}
+
+.multiselect__spinner:after {
+  animation: a 2.4s cubic-bezier(.51,.09,.21,.8);
+  animation-iteration-count: infinite;
+}
+
+.multiselect__loading-enter-active,
+.multiselect__loading-leave-active {
+  transition: opacity .4s ease-in-out;
+  opacity: 1;
+}
+
+.multiselect__loading-enter,
+.multiselect__loading-leave-active {
+  opacity: 0;
+}
+
+.multiselect,
+.multiselect__input,
+.multiselect__single {
+  font-family: inherit;
+  font-size: 14px;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+.multiselect {
+  box-sizing: content-box;
+  display: block;
+  position: relative;
+  width: 100%;
+  min-height: 40px;
+  text-align: left;
+  color: #35495e;
+}
+
+.multiselect * {
+  box-sizing: border-box;
+}
+
+.multiselect:focus {
+  outline: none;
+}
+
+.multiselect--disabled {
+  opacity: .6;
+}
+
+.multiselect--active {
+  z-index: 1;
+}
+
+.multiselect--active:not(.multiselect--above) .multiselect__current,
+.multiselect--active:not(.multiselect--above) .multiselect__input,
+.multiselect--active:not(.multiselect--above) .multiselect__tags {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.multiselect--active .multiselect__select {
+  transform: rotate(180deg);
+}
+
+.multiselect--above.multiselect--active .multiselect__current,
+.multiselect--above.multiselect--active .multiselect__input,
+.multiselect--above.multiselect--active .multiselect__tags {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.multiselect__input,
+.multiselect__single {
+  position: relative;
+  display: inline-block;
+  min-height: 20px;
+  line-height: 20px;
+  border: none;
+  border-radius: 5px;
+  background: #fff;
+  padding: 0 0 0 5px;
+  width: 100%;
+  transition: border .1s ease;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+  vertical-align: top;
+}
+
+.multiselect__tag~.multiselect__input,
+.multiselect__tag~.multiselect__single {
+  width: auto;
+}
+
+.multiselect__input:hover,
+.multiselect__single:hover {
+  border-color: #cfcfcf;
+}
+
+.multiselect__input:focus,
+.multiselect__single:focus {
+  border-color: #a8a8a8;
+  outline: none;
+}
+
+.multiselect__single {
+  padding-left: 6px;
+  margin-bottom: 8px;
+}
+
+.multiselect__tags-wrap {
+  display: inline;
+}
+
+.multiselect__tags {
+  min-height: 40px;
+  display: block;
+  padding: 8px 40px 0 8px;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+  background: #fff;
+}
+
+.multiselect__tag {
+  position: relative;
+  display: inline-block;
+  padding: 4px 26px 4px 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+  color: #fff;
+  line-height: 1;
+  background: #41b883;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+}
+
+.multiselect__tag-icon {
+  cursor: pointer;
+  margin-left: 7px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-weight: 700;
+  font-style: normal;
+  width: 22px;
+  text-align: center;
+  line-height: 22px;
+  transition: all .2s ease;
+  border-radius: 5px;
+}
+
+.multiselect__tag-icon:after {
+  content: "\D7";
+  color: #266d4d;
+  font-size: 14px;
+}
+
+.multiselect__tag-icon:focus,
+.multiselect__tag-icon:hover {
+  background: #369a6e;
+}
+
+.multiselect__tag-icon:focus:after,
+.multiselect__tag-icon:hover:after {
+  color: #fff;
+}
+
+.multiselect__current {
+  min-height: 40px;
+  overflow: hidden;
+  padding: 8px 12px 0;
+  padding-right: 30px;
+  white-space: nowrap;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+}
+
+.multiselect__current,
+.multiselect__select {
+  line-height: 16px;
+  box-sizing: border-box;
+  display: block;
+  margin: 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.multiselect__select {
+  position: absolute;
+  width: 40px;
+  height: 38px;
+  right: 1px;
+  top: 1px;
+  padding: 4px 8px;
+  text-align: center;
+  transition: transform .2s ease;
+}
+
+.multiselect__select:before {
+  position: relative;
+  right: 0;
+  top: 65%;
+  color: #999;
+  margin-top: 4px;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  border-color: #999 transparent transparent;
+  content: "";
+}
+
+.multiselect__placeholder {
+  color: #adadad;
+  display: inline-block;
+  margin-bottom: 10px;
+  padding-top: 2px;
+}
+
+.multiselect--active .multiselect__placeholder {
+  display: none;
+}
+
+.multiselect__content-wrapper {
+  position: absolute;
+  display: block;
+  background: #fff;
+  width: 100%;
+  max-height: 240px;
+  overflow: auto;
+  border: 1px solid #e8e8e8;
+  border-top: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  z-index: 1;
+  -webkit-overflow-scrolling: touch;
+}
+
+.multiselect__content {
+  list-style: none;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  min-width: 100%;
+  vertical-align: top;
+}
+
+.multiselect--above .multiselect__content-wrapper {
+  bottom: 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: none;
+  border-top: 1px solid #e8e8e8;
+}
+
+.multiselect__content::webkit-scrollbar {
+  display: none;
+}
+
+.multiselect__element {
+  display: block;
+}
+
+.multiselect__option {
+  display: block;
+  padding: 12px;
+  min-height: 40px;
+  line-height: 16px;
+  text-decoration: none;
+  text-transform: none;
+  vertical-align: middle;
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.multiselect__option:after {
+  top: 0;
+  right: 0;
+  position: absolute;
+  line-height: 40px;
+  padding-right: 12px;
+  padding-left: 20px;
+}
+
+.multiselect__option--highlight {
+  background: #41b883;
+  outline: none;
+  color: #fff;
+}
+
+.multiselect__option--highlight:after {
+  content: attr(data-select);
+  background: #41b883;
+  color: #fff;
+}
+
+.multiselect__option--selected {
+  background: #f3f3f3;
+  color: #35495e;
+  font-weight: 700;
+}
+
+.multiselect__option--selected:after {
+  content: attr(data-selected);
+  color: silver;
+}
+
+.multiselect__option--selected.multiselect__option--highlight {
+  background: #ff6a6a;
+  color: #fff;
+}
+
+.multiselect__option--selected.multiselect__option--highlight:after {
+  background: #ff6a6a;
+  content: attr(data-deselect);
+  color: #fff;
+}
+
+.multiselect--disabled {
+  background: #ededed;
+  pointer-events: none;
+}
+
+.multiselect--disabled .multiselect__current,
+.multiselect--disabled .multiselect__select,
+.multiselect__option--disabled {
+  background: #ededed;
+  color: #a6a6a6;
+}
+
+.multiselect__option--disabled {
+  cursor: text;
+  pointer-events: none;
+}
+
+.multiselect__option--disabled.multiselect__option--highlight {
+  background: #dedede!important;
+}
+
+.multiselect-enter-active,
+.multiselect-leave-active {
+  transition: all .15s ease;
+}
+
+.multiselect-enter,
+.multiselect-leave-active {
+  opacity: 0;
+}
+
+.multiselect__strong {
+  margin-bottom: 8px;
+  line-height: 20px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+[dir=rtl] .multiselect {
+  text-align: right;
+}
+
+[dir=rtl] .multiselect__select {
+  right: auto;
+  left: 1px;
+}
+
+[dir=rtl] .multiselect__tags {
+  padding: 8px 8px 0 40px;
+}
+
+[dir=rtl] .multiselect__content {
+  text-align: right;
+}
+
+[dir=rtl] .multiselect__option:after {
+  right: auto;
+  left: 0;
+}
+
+[dir=rtl] .multiselect__clear {
+  right: auto;
+  left: 12px;
+}
+
+[dir=rtl] .multiselect__spinner {
+  right: auto;
+  left: 1px;
+}
+
+@keyframes a {
+  0% {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(2turn);
+  }
+}</style><style type="text/css">
+#free-reward-panel .reward-users-modal main {
+  padding: 0;
+}
+</style><style type="text/css">
+@charset "UTF-8";
+/*
+ * 变量
+*/
+.reward-note-modal .v-modal {
+  width: 620px;
+  text-align: center;
+}
+.reward-note-modal .v-modal form {
+    margin: 0 auto 25px auto;
+    padding: 0 40px;
+}
+.reward-note-modal .v-modal .reward-intro {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+.reward-note-modal .v-modal .reward-intro .avatar {
+      cursor: default !important;
+      width: 36px;
+      height: 36px;
+      margin-right: 10px;
+      display: inline-block;
+}
+.reward-note-modal .v-modal .reward-intro .intro {
+      margin-right: 5px;
+      font-weight: bold;
+      vertical-align: middle;
+}
+.reward-note-modal .v-modal .reward-intro i {
+      color: #EA6F5A;
+      vertical-align: middle;
+}
+.reward-note-modal .v-modal .main-inputs {
+    margin: 25px 0;
+}
+.reward-note-modal .v-modal .main-inputs .amount-group {
+      margin: 0 -5px;
+}
+.reward-note-modal .v-modal .main-inputs .amount-group input {
+        display: none;
+}
+.reward-note-modal .v-modal .main-inputs .amount-group input:checked + .option {
+        color: #EA6F5A;
+        border-color: #EA6F5A;
+}
+.reward-note-modal .v-modal .main-inputs .amount-group .custom-amount:checked + .option .custom-text {
+        opacity: 0;
+}
+.reward-note-modal .v-modal .main-inputs .amount-group .custom-amount:checked + .option .custom-amount-input {
+        opacity: 1;
+}
+.reward-note-modal .v-modal .main-inputs .amount-group .option {
+        position: relative;
+        margin: 0 5px 15px;
+        width: 156px;
+        height: 56px;
+        line-height: 54px;
+        border: 1px solid #E6E6E6;
+        border-radius: 4px;
+        font-weight: normal;
+        color: #999999;
+        cursor: pointer;
+}
+.reward-note-modal .v-modal .main-inputs .amount-group .option i {
+          font-size: 16px;
+          vertical-align: middle;
+}
+.reward-note-modal .v-modal .main-inputs .amount-group .option .amount {
+          font-size: 28px;
+          vertical-align: middle;
+}
+.reward-note-modal .v-modal .main-inputs .amount-group .option .piece {
+          font-size: 13px;
+          vertical-align: sub;
+}
+.reward-note-modal .v-modal .main-inputs .amount-group .option .custom-amount-input {
+          position: absolute;
+          top: 0;
+          z-index: -1;
+          width: 100%;
+          opacity: 0;
+}
+.reward-note-modal .v-modal .main-inputs .amount-group .option .custom-amount-input i {
+            position: absolute;
+            top: 0;
+            left: 10px;
+}
+.reward-note-modal .v-modal .main-inputs .amount-group .option .custom-amount-input .piece {
+            position: absolute;
+            top: 4px;
+            right: 10px;
+}
+.reward-note-modal .v-modal .main-inputs .amount-group .option .custom-amount-input input {
+            display: block;
+            margin: 0 auto;
+            width: 80px;
+            height: 54px;
+            line-height: 54px;
+            border: none;
+            font-size: 28px;
+            text-align: center;
+            background: transparent;
+            -moz-appearance: textfield;
+}
+.reward-note-modal .v-modal .main-inputs .amount-group .option .custom-amount-input input::-webkit-outer-spin-button, .reward-note-modal .v-modal .main-inputs .amount-group .option .custom-amount-input input::-webkit-inner-spin-button {
+              -webkit-appearance: none !important;
+}
+.reward-note-modal .v-modal .main-inputs .message {
+      padding: 15px 20px;
+      margin-bottom: 0;
+      font-size: 14px;
+      border: 1px solid #E6E6E6;
+      color: #333333;
+      border-radius: 4px;
+      background-color: rgba(180, 180, 180, 0.1);
+}
+.reward-note-modal .v-modal .main-inputs .message textarea {
+        width: 100%;
+        height: 44px;
+        padding: 0;
+        margin: 0;
+        resize: none;
+        background: none !important;
+        border: none !important;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        -webkit-box-shadow: none;
+                box-shadow: none;
+}
+.reward-note-modal .v-modal .main-inputs .message textarea:focus {
+          outline: none;
+}
+.reward-note-modal .v-modal .reward-info .amount {
+    font-size: 28px;
+    font-weight: bold;
+    color: #EA6F5A;
+}
+.reward-note-modal .v-modal .reward-info .pay-method {
+    font-size: 14px;
+}
+.reward-note-modal .v-modal .reward-info .pay-method a {
+      color: #3194D0;
+}
+.reward-note-modal .v-modal .choose-pay {
+    margin: 0 -5px;
+}
+.reward-note-modal .v-modal .choose-pay input {
+      display: none;
+}
+.reward-note-modal .v-modal .choose-pay input:checked + .option {
+      color: #EA6F5A;
+      border-color: #EA6F5A;
+}
+.reward-note-modal .v-modal .choose-pay .option {
+      margin: 20px 5px 10px;
+      width: 156px;
+      height: 56px;
+      line-height: 54px;
+      text-align: center;
+      border: 1px solid #E6E6E6;
+      border-radius: 4px;
+      cursor: pointer;
+}
+.reward-note-modal .v-modal .choose-pay .option img {
+        height: 30px;
+}
+.reward-note-modal .v-modal .choose-pay .option img.day.alipay, .reward-note-modal .v-modal .choose-pay .option img.night.alipay {
+        min-width: 85px;
+}
+.reward-note-modal .v-modal .choose-pay .option img.day.wechat, .reward-note-modal .v-modal .choose-pay .option img.night.wechat {
+        min-width: 112px;
+}
+.reward-note-modal .v-modal .choose-pay .option img.night {
+        display: none;
+}
+body.reader-night-mode .reward-note-modal .v-modal .choose-pay .option img.night {
+        display: inline-block;
+}
+body.reader-night-mode .reward-note-modal .v-modal .choose-pay .option img.day {
+        display: none;
+}
+.reward-note-modal .v-modal .choose-pay .tooltip {
+      width: 230px;
+}
+.reward-note-modal .v-modal .modal-footer {
+    padding: 0 15px 20px;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+}
+.reward-note-modal .v-modal .modal-footer .btn {
+      padding: 8px 45px;
+      font-size: 24px;
+}
+.reward-note-modal .v-modal .btn-pay {
+    padding: 8px 25px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #F5A623;
+}
+.weixin-pay, .success-pay {
+  text-align: center;
+}
+.weixin-pay .v-modal, .success-pay .v-modal {
+    width: 350px;
+}
+.weixin-pay .ic-successed, .success-pay .ic-successed {
+    font-size: 60px;
+    color: #3db922;
+}
+.weixin-pay h2, .weixin-pay h3, .success-pay h2, .success-pay h3 {
+    margin-bottom: 20px;
+    color: #333333;
+}
+.weixin-pay h2, .success-pay h2 {
+    margin: 0 0 40px 0;
+    font-size: 24px;
+}
+.weixin-pay .bind-text, .success-pay .bind-text {
+    position: relative;
+    margin-bottom: 30px;
+    font-size: 14px;
+    color: #999999;
+}
+.weixin-pay .bind-text:before, .weixin-pay .bind-text:after, .success-pay .bind-text:before, .success-pay .bind-text:after {
+      content: "";
+      border-top: 1px solid #999;
+      display: block;
+      position: absolute;
+      width: 40px;
+      top: 8px;
+}
+.weixin-pay .bind-text:before, .success-pay .bind-text:before {
+      left: 30px;
+}
+.weixin-pay .bind-text:after, .success-pay .bind-text:after {
+      right: 30px;
+}
+.weixin-pay .share-bind, .success-pay .share-bind {
+    display: block;
+    margin-bottom: 30px;
+}
+.weixin-pay .share-bind i, .success-pay .share-bind i {
+      margin-right: 4px;
+      font-size: 22px;
+      vertical-align: middle;
+}
+.weixin-pay .share-bind.wechat i, .success-pay .share-bind.wechat i {
+      color: #00BB29;
+}
+.weixin-pay .share-bind.weibo i, .success-pay .share-bind.weibo i {
+      color: #E05244;
+}
+.weixin-pay .wx-qr-code, .success-pay .wx-qr-code {
+    display: inline-block;
+}
+.weixin-pay .wx-qr-code img, .success-pay .wx-qr-code img {
+      margin: 0 auto;
+      padding: 10px;
+      width: 200px;
+      background-color: #ffffff;
+}
+.weixin-pay .pay-amount, .success-pay .pay-amount {
+    margin: 20px 0;
+    color: #787878;
+}
+.weixin-pay .pay-amount span, .success-pay .pay-amount span {
+      color: #F5A623;
+}
+</style><style type="text/css">
+@charset "UTF-8";
+/*
+ * 变量
+*/
+.v-modal-wrap {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background-color: transparent;
+}
+.v-modal-wrap.modal-leave-active {
+    -webkit-transition: opacity 0.3s;
+    -o-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+}
+.v-modal-wrap.modal-enter-active .v-modal-mask, .v-modal-wrap.modal-leave-active .v-modal-mask {
+    opacity: 0;
+}
+.v-modal-wrap.modal-enter-active .v-modal, .v-modal-wrap.modal-leave-active .v-modal {
+    -webkit-transform: translate(-50%, -70%);
+        -ms-transform: translate(-50%, -70%);
+            transform: translate(-50%, -70%);
+    opacity: 0;
+}
+.v-modal-wrap .v-modal-mask {
+    background-color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    -webkit-transition: opacity 0.3s;
+    -o-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+    opacity: 1;
+}
+.v-modal-wrap .v-modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+    transition: opacity 0.3s, -webkit-transform 0.3s;
+    -o-transition: opacity 0.3s, transform 0.3s;
+    transition: opacity 0.3s, transform 0.3s;
+    transition: opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
+    opacity: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    overflow: hidden;
+}
+.v-modal-wrap .v-modal > header:before, .v-modal-wrap .v-modal > header:after, .v-modal-wrap .v-modal > main:before, .v-modal-wrap .v-modal > main:after, .v-modal-wrap .v-modal > footer:before, .v-modal-wrap .v-modal > footer:after {
+      content: '';
+      clear: both;
+      display: table;
+}
+.v-modal-wrap .v-modal > header {
+      padding: 20px;
+      border-bottom: 1px solid #F0F0F0;
+}
+.v-modal-wrap .v-modal > header h4 {
+        margin: 0;
+        color: #333;
+        text-align: left;
+}
+.v-modal-wrap .v-modal .close {
+      position: absolute;
+      right: 16px;
+      top: 20px;
+      font-size: 26px;
+      line-height: 20px;
+      color: rgba(0, 0, 0, 0.8);
+}
+.v-modal-wrap .v-modal .close:hover {
+        color: #000000;
+}
+.v-modal-wrap .v-modal > main {
+      padding: 20px 20px 20px 20px;
+      font-size: 15px;
+      color: #333;
+      -webkit-box-flex: 1;
+      -webkit-flex-grow: 1;
+          -ms-flex-positive: 1;
+              flex-grow: 1;
+      overflow-x: hidden;
+      overflow-y: auto;
+}
+.v-modal-wrap .v-modal > footer {
+      padding: 20px;
+      background-color: #fff;
+}
+.v-modal-wrap .v-modal > footer button {
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        border: 0;
+        float: right;
+}
+.v-modal-wrap .v-modal > footer button:focus {
+          outline: 0;
+}
+.v-modal-wrap .v-modal > footer .submit {
+        padding: 4px 12px;
+        border: 1px solid;
+        border-radius: 20px;
+}
+.v-modal-wrap .v-modal > footer .cancel {
+        margin-top: 5px;
+}
+.v-modal-wrap .v-modal > footer .cancel:hover {
+          color: #333333;
+}
+.reader-night-mode .v-modal-wrap .v-modal-mask {
+  background-color: rgba(63, 63, 63, 0.7);
+}
+.reader-night-mode .v-modal-wrap .v-modal {
+  background-color: #3f3f3f;
+}
+.reader-night-mode .v-modal-wrap .v-modal header {
+    border-color: #2F2F2F;
+}
+.reader-night-mode .v-modal-wrap .v-modal header h4 {
+      color: #C8C8C8;
+}
+.reader-night-mode .v-modal-wrap .v-modal .close {
+    color: #C8C8C8;
+}
+.reader-night-mode .v-modal-wrap .v-modal .close:hover {
+      color: #ffffff;
+}
+.reader-night-mode .v-modal-wrap .v-modal main {
+    color: #C8C8C8;
+}
+.reader-night-mode .v-modal-wrap .v-modal footer {
+    background-color: #3f3f3f;
+}
+.reader-night-mode .v-modal-wrap .v-modal footer .cancel:hover {
+      color: #C8C8C8;
+}
+</style><style type="text/css">
+.nqzzJ71pC-jOnJKAfdtr6_0 {
+  float: right;
+  height: 55px;
+  padding: 15px 0px;
+  margin: 0 12px;
+}
+._3tScN0zmSdGLaUAH4SxTbM_0 {
+    width: 100%;
+    height: 100%;
+}
+.nqzzJ71pC-jOnJKAfdtr6_0 ._3f806byixOPpOPWnx8HiQP_0 {
+    height: 25px;
+}
+.nqzzJ71pC-jOnJKAfdtr6_0 ._2MIQ6sBppQZAKea91We0qf_0 {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.6;
+    z-index: 1000;
+}
+.nqzzJ71pC-jOnJKAfdtr6_0 ._1RppgOJ_CQiXgzd3ke-sbJ_0 {
+    position: fixed;
+    left: -webkit-calc( 50% - 190px);
+    left: calc( 50% - 190px);
+    top: -webkit-calc( 50% - 300px);
+    top: calc( 50% - 300px);
+    width: 380px;
+    height: 425px;
+    background-color: #fff;
+    padding: 40px 72px 0;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    z-index: 1000;
+    text-align: center;
+}
+body.reader-night-mode .nqzzJ71pC-jOnJKAfdtr6_0 ._1RppgOJ_CQiXgzd3ke-sbJ_0 {
+      background-color: #3f3f3f;
+      color: #c8c8c8;
+}
+.nqzzJ71pC-jOnJKAfdtr6_0 ._1RppgOJ_CQiXgzd3ke-sbJ_0 h4 {
+      margin: 0;
+      line-height: 25px;
+}
+.nqzzJ71pC-jOnJKAfdtr6_0 ._1RppgOJ_CQiXgzd3ke-sbJ_0 h4 span {
+        color: #e9634c;
+}
+.nqzzJ71pC-jOnJKAfdtr6_0 ._1RppgOJ_CQiXgzd3ke-sbJ_0 img {
+      width: 190px;
+      height: 190px;
+      margin: 12px 0 8px 0;
+}
+.nqzzJ71pC-jOnJKAfdtr6_0 ._1RppgOJ_CQiXgzd3ke-sbJ_0 p {
+      font-size: 14px;
+      line-height: 20px;
+      margin: 0;
+}
+.nqzzJ71pC-jOnJKAfdtr6_0 ._1RppgOJ_CQiXgzd3ke-sbJ_0 ._2WUz9DZJO5DIC_O5sD1kac_0 {
+      background-color: #e9634c;
+      color: #fff;
+      margin: 25px auto 0;
+      width: 190px;
+      height: 40px;
+      border-radius: 20px;
+      line-height: 40px;
+      font-size: 14px;
+      cursor: pointer;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+</style><style type="text/css">
+@charset "UTF-8";
+/*
+ * 变量
+*/
+.youdao-fixed-ad {
+  display: block;
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border: 1px solid #e8eae9;
+}
+.youdao-fixed-ad .img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.youdao-fixed-ad .ad-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: block;
+    font-size: 12px;
+    padding: 2px 5px 0 6px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    cursor: pointer;
+}
+.qingteng-ads {
+  border: 1px solid #e8e8e8;
+  width: 180px;
+}
+</style><style type="text/css">
+.yuxi-fixed-ad {
+  position: relative;
+  width: 180px;
+  height: 180px;
+}
+.yuxi-fixed-ad .img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url(//cdn2.jianshu.io/assets/web/yuxi-ads-d73b364baf42dfeca32d518c819a0136.jpg);
+}
+.yuxi-fixed-ad .ad-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: block;
+    font-size: 12px;
+    padding: 2px 5px 0 6px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    cursor: pointer;
+}
+</style><style type="text/css">
+@charset "UTF-8";
+/*
+ * 变量
+*/
+.like[data-v-6ddd02c6] {
+  display: inline-block;
+}
+.like .like-group[data-v-6ddd02c6] {
+    position: relative;
+    padding: 13px 0 15px 0;
+    font-size: 0;
+    border: 1px solid #EA6F5A;
+    border-radius: 40px;
+}
+.like .like-group[data-v-6ddd02c6]:hover {
+      background-color: rgba(236, 97, 73, 0.05);
+}
+.like .like-group .btn-like[data-v-6ddd02c6] {
+      display: inline-block;
+      font-size: 19px;
+}
+.like .like-group .btn-like[data-v-6ddd02c6]:before {
+        content: '';
+        position: absolute;
+        left: 12px;
+        top: 2px;
+        width: 50px;
+        height: 50px;
+        background-image: url(//cdn2.jianshu.io/assets/web/like_animation_steps-62a00a7b52377d3069927cdb8e61fd34.png);
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: 1000px 50px;
+}
+.like .like-group .btn-like a[data-v-6ddd02c6] {
+        position: relative;
+        padding: 18px 30px 18px 55px;
+        color: #EA6F5A;
+}
+.like .like-group .modal-wrap[data-v-6ddd02c6] {
+      font-size: 18px;
+      border-left: 1px solid rgba(236, 97, 73, 0.4);
+      display: inline-block;
+      margin-left: -15px;
+}
+.like .like-group .modal-wrap a[data-v-6ddd02c6] {
+        color: #EA6F5A;
+        padding: 18px 26px 18px 18px;
+}
+.like .like-group.like-animation[data-v-6ddd02c6], .like .like-group.active[data-v-6ddd02c6] {
+      background-color: #EA6F5A;
+}
+.like .like-group.like-animation .btn-like a[data-v-6ddd02c6], .like .like-group.active .btn-like a[data-v-6ddd02c6] {
+        color: white;
+}
+.like .like-group.like-animation .modal-wrap[data-v-6ddd02c6], .like .like-group.active .modal-wrap[data-v-6ddd02c6] {
+        border-left: 1px solid white;
+}
+.like .like-group.like-animation .modal-wrap a[data-v-6ddd02c6], .like .like-group.active .modal-wrap a[data-v-6ddd02c6] {
+          color: white;
+}
+.like .like-group.like-animation .btn-like[data-v-6ddd02c6]:before {
+      -webkit-animation: likeBlast-data-v-6ddd02c6 0.6s 1 steps(19);
+              animation: likeBlast-data-v-6ddd02c6 0.6s 1 steps(19);
+      background-position: right;
+}
+@-webkit-keyframes likeBlast {
+0% {
+    background-position: left;
+}
+100% {
+    background-position: right;
+}
+}
+@keyframes likeBlast-data-v-6ddd02c6 {
+0% {
+    background-position: left;
+}
+100% {
+    background-position: right;
+}
+}
+.like .like-group.active .btn-like[data-v-6ddd02c6]:before {
+      background-position: right;
+}
+</style><style type="text/css">
+@charset "UTF-8";
+/*
+ * 变量
+*/
+.main {
+  position: relative;
+  margin: 0 auto;
+  padding: 0 0 30px 0;
+  width: 620px;
+}
+.main .title {
+    padding-left: 8px;
+    border-left: 3px solid #EA6F5A;
+    line-height: 1;
+    font-size: 15px;
+}
+.main .collection-settings {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    font-size: 13px;
+    color: #A0A0A0;
+}
+.main .collection-settings span {
+      padding-left: 4px;
+}
+.main .include-collection {
+    width: 100%;
+    padding-top: 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+}
+.main .include-collection .item {
+      display: inline-block;
+      margin: 0 12px 12px 0;
+      min-height: 32px;
+      background-color: white;
+      border: 1px solid #DCDCDC;
+      border-radius: 4px;
+      vertical-align: top;
+      overflow: hidden;
+}
+.main .include-collection .item img {
+        width: 32px;
+        height: 32px;
+}
+.main .include-collection .item .name {
+        display: inline-block;
+        padding: 0 10px;
+        font-size: 14px;
+}
+.main .include-collection .add-collection-wrap {
+      margin: 0 12px 12px 0;
+}
+.main .include-collection .add-collection {
+      padding: 8px 12px;
+      font-size: 14px;
+      border: 1px solid #DCDCDC;
+      border-radius: 4px;
+}
+.main .include-collection .add-collection i {
+        margin-right: 4px;
+        color: #969696;
+}
+.main .recommend-note a {
+    position: relative;
+    margin: 20px 2px 0 0;
+    width: 200px;
+    height: 160px;
+    display: inline-block;
+}
+.main .recommend-note a:after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 160px;
+      border-radius: 0 0 4px 4px;
+      -webkit-box-shadow: inset 0px -80px 50px -22px rgba(0, 0, 0, 0.6);
+              box-shadow: inset 0px -80px 50px -22px rgba(0, 0, 0, 0.6);
+      top: 0;
+      left: 0;
+      z-index: 1;
+}
+.main .recommend-note .name {
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    right: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #ffffff;
+    z-index: 2;
+}
+.main .recommend-note .author {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    z-index: 2;
+}
+.main .recommend-note .avatar {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+.main .recommend-note .avatar img {
+      border-radius: 50%;
+}
+.main .recommend-note .author-name {
+    font-size: 12px;
+    color: #ffffff;
+    display: inline-block;
+    vertical-align: -1px;
+}
+.main .show-more {
+    margin: 0 12px 12px 0;
+    font-size: 14px;
+    color: #A0A0A0;
+}
+</style><style type="text/css">
+#featured-comment-list {
+  margin-top: 30px;
+  margin-bottom: -15px;
+}
+</style><style type="text/css">
+@charset "UTF-8";
+/*
+ * 变量
+*/
+.pc-bind-phone-modal .modal-content, .pc-bind-phone-modal .modal-body {
+  overflow: visible;
+}
+.pc-bind-phone-modal .modal-body {
+  padding-top: 14px;
+}
+.pc-bind-phone-modal .dropdown-menu {
+  max-height: 300px;
+  overflow: auto;
+}
+.pc-bind-phone-modal .dropdown-menu .tag {
+    background-color: #efefef;
+    color: #4A4A4A;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 25px;
+    font-size: 12px;
+}
+.pc-bind-phone-modal .tips {
+  color: #999999;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  margin-bottom: 14px;
+}
+.pc-bind-phone-modal .tips a {
+    color: #3194D0;
+}
+.reader-night-mode .pc-bind-phone-modal .dropdown-menu .tag {
+  background-color: #2F2F2F;
+  color: #999999;
+}
+</style><style type="text/css">
+@charset "UTF-8";
+/*
+ * 变量
+*/
+.comment-images {
+  display: block;
+  width: 338px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  position: relative;
+  font-size: 0;
+}
+.comment-images .preview-img {
+    display: block;
+}
+.comment-images .image {
+    position: relative;
+    border-radius: 4px;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+}
+body.reader-night-mode .comment-images .image {
+      border-color: #2f2f2f;
+}
+.comment-images .image:not(:nth-child(3n)) {
+      margin-right: 4px;
+}
+.comment-images .image:nth-child(n + 4) {
+      margin-top: 4px;
+}
+.comment-images .image.is-long:after {
+      content: '\957F\56FE';
+      position: absolute;
+      bottom: 0;
+      margin-left: -32px;
+      width: 32px;
+      height: 28px;
+      font-size: 12px;
+      text-align: center;
+      line-height: 28px;
+      background-color: #2f2f2f;
+      opacity: 0.5;
+      color: #fff;
+}
+.comment-images .one-image.is-long {
+    width: 110px;
+    height: 220px;
+    background-position: top left;
+    background-size: 110px auto;
+}
+.comment-images .one-image.is-long:after {
+      left: 100%;
+}
+.comment-images .one-image.is-normal {
+    height: 110px;
+    width: 100%;
+    background-size: contain;
+    background-position: center left;
+}
+.comment-images .many-image {
+    background-size: cover;
+    display: inline-block !important;
+    height: 110px;
+    width: 110px;
+}
+.comment-images .many-image:after {
+      left: 100%;
+}
+.comment-images .sub-image {
+    width: 105px;
+    height: 105px;
+}
+.comment-images .collapsed-btn {
+    display: block;
+    color: #3194d0;
+    font-size: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.comment-images .mask {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 32%;
+    border-radius: 2px;
+    background-color: rgba(47, 47, 47, 0.6);
+    overflow: hidden;
+    pointer-events: none;
+}
+.comment-images .mask span {
+      font-size: 15px;
+      color: #fff;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+      width: 100%;
+      text-align: center;
+}
+</style><style type="text/css">
+@charset "UTF-8";
+/*
+ * 变量
+*/
+.tips-card-loading[data-v-f3bf5228], .tips-card[data-v-f3bf5228] {
+  width: 460px;
+  position: relative;
+  left: 0;
+  top: 0;
+  border-radius: 6px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d9d9d9;
+}
+.tips-card-loading[data-v-f3bf5228] {
+  height: 200px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+.tips-card-loading div[data-v-f3bf5228] {
+    background-color: #EAEAEA;
+}
+.tips-card-loading .avatar[data-v-f3bf5228] {
+    width: 72px !important;
+    height: 72px !important;
+    border-radius: 50%;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+.tips-card-loading .name[data-v-f3bf5228] {
+    width: 120px;
+    height: 20px;
+    position: absolute;
+    left: 110px;
+    top: 31px;
+}
+.tips-card-loading .content[data-v-f3bf5228] {
+    position: absolute;
+    left: 110px;
+    top: 62px;
+    width: 238px;
+    height: 39.2px;
+    background-color: transparent;
+}
+.tips-card-loading .content .text[data-v-f3bf5228], .tips-card-loading .content .text-delay[data-v-f3bf5228] {
+      height: 14px;
+      position: absolute;
+      left: 0;
+      width: 100%;
+}
+.tips-card-loading .content .text[data-v-f3bf5228] {
+      top: 2px;
+      -webkit-animation: loading-data-v-f3bf5228 1s ease-in-out infinite;
+      animation: loading-data-v-f3bf5228 1s ease-in-out infinite;
+}
+.tips-card-loading .content .text-delay[data-v-f3bf5228] {
+      bottom: 3px;
+      -webkit-animation: loading-data-v-f3bf5228 1s ease-in-out -0.5s infinite;
+      animation: loading-data-v-f3bf5228 1s ease-in-out -0.5s infinite;
+}
+@keyframes loading-data-v-f3bf5228 {
+0% {
+    width: 60%;
+}
+50% {
+    width: 100%;
+}
+100% {
+    width: 60%;
+}
+}
+@-webkit-keyframes loading {
+0% {
+    width: 60%;
+}
+50% {
+    width: 100%;
+}
+100% {
+    width: 60%;
+}
+}
+.tips-card-loading .meta[data-v-f3bf5228] {
+    width: 30px;
+    height: 42px;
+    position: absolute;
+    bottom: 20px;
+    background-color: transparent;
+}
+.tips-card-loading .meta.meta-1[data-v-f3bf5228] {
+      left: 30px;
+}
+.tips-card-loading .meta.meta-2[data-v-f3bf5228] {
+      left: 90px;
+}
+.tips-card-loading .meta.meta-3[data-v-f3bf5228] {
+      left: 150px;
+}
+.tips-card-loading .meta .count[data-v-f3bf5228], .tips-card-loading .meta .type[data-v-f3bf5228] {
+      position: absolute;
+}
+.tips-card-loading .meta .count[data-v-f3bf5228] {
+      left: -5px;
+      top: 6px;
+      height: 18px;
+      width: 40px;
+}
+.tips-card-loading .meta .type[data-v-f3bf5228] {
+      left: 1px;
+      bottom: 2px;
+      height: 13px;
+      width: 28px;
+}
+.tips-card-loading .button[data-v-f3bf5228] {
+    position: absolute;
+    bottom: 17px;
+    width: 90px;
+    height: 40px;
+    border-radius: 40px;
+}
+.tips-card-loading .message[data-v-f3bf5228] {
+    right: 120px;
+}
+.tips-card-loading .follow[data-v-f3bf5228] {
+    right: 17px;
+}
+.tips-card[data-v-f3bf5228] {
+  z-index: 10;
+}
+.tips-card .card-content[data-v-f3bf5228] {
+    padding: 20px 20px 0 20px;
+}
+.tips-card .card-content .summary[data-v-f3bf5228] {
+      padding: 8px 0 20px 90px;
+      min-height: 92px;
+      position: relative;
+}
+.tips-card .card-content .summary .avatar[data-v-f3bf5228] {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 72px;
+        height: 72px;
+        cursor: pointer;
+        border-radius: 50%;
+        background-color: #EAEAEA;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+}
+.tips-card .card-content .summary .name[data-v-f3bf5228] {
+        height: 26px;
+        margin-right: 3px;
+        margin-bottom: 8px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
+}
+.tips-card .card-content .summary .name .nickname[data-v-f3bf5228] {
+          color: #333333;
+          font-size: 19px;
+          font-weight: bold;
+          overflow: hidden;
+          -o-text-overflow: ellipsis;
+             text-overflow: ellipsis;
+          white-space: nowrap;
+          cursor: pointer;
+}
+.tips-card .card-content .summary .name .sex[data-v-f3bf5228], .tips-card .card-content .summary .name .badge[data-v-f3bf5228] {
+          -webkit-flex-shrink: 0;
+              -ms-flex-negative: 0;
+                  flex-shrink: 0;
+          display: inline-block;
+}
+.tips-card .card-content .summary .name .sex[data-v-f3bf5228] {
+          font-size: 19px;
+          width: 19px;
+          margin: 0 4px;
+}
+.tips-card .card-content .summary .intro[data-v-f3bf5228] {
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+           text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        margin-bottom: 12px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #333333;
+}
+.tips-card .card-content .summary .intro.block[data-v-f3bf5228] {
+          color: #999999;
+}
+.tips-card .card-content .summary .list .item[data-v-f3bf5228] {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 13px;
+        color: #999999;
+        cursor: pointer;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+           text-overflow: ellipsis;
+        white-space: nowrap;
+}
+.tips-card .card-content .summary .list .item i[data-v-f3bf5228] {
+          margin-right: 2px;
+}
+.tips-card .card-footer[data-v-f3bf5228] {
+    border-top: 1px solid #F0F0F0;
+    padding: 15px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    overflow: hidden;
+    _zoom: 1;
+}
+.tips-card .card-footer .profile[data-v-f3bf5228] {
+      width: 198px;
+      overflow: hidden;
+      _zoom: 1;
+      float: left;
+}
+.tips-card .card-footer .profile div[data-v-f3bf5228] {
+        float: left;
+        width: 60px;
+        height: 44px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
+}
+.tips-card .card-footer .profile div span[data-v-f3bf5228] {
+          display: block;
+          width: 100%;
+          text-align: center;
+}
+.tips-card .card-footer .profile div .type[data-v-f3bf5228] {
+          font-size: 13px;
+          color: #999999;
+}
+.tips-card .card-footer .profile div .count[data-v-f3bf5228] {
+          font-size: 18px;
+          color: #333333;
+}
+.tips-card .card-footer .social[data-v-f3bf5228] {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-pack: end;
+      -webkit-justify-content: flex-end;
+          -ms-flex-pack: end;
+              justify-content: flex-end;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      float: right;
+      overflow: hidden;
+      _zoom: 1;
+}
+.tips-card .card-footer .social .message[data-v-f3bf5228] {
+        border: 1px solid rgba(59, 194, 29, 0.7);
+        color: #42C02E;
+        margin: 0 10px 0 16px;
+        font-size: 15px;
+        padding: 8px 0;
+        width: 90px;
+        border-radius: 40px;
+        text-align: center;
+        cursor: pointer;
+        float: left;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+}
+.tips-card .card-footer .social .message[data-v-f3bf5228]:hover {
+          border: 1px solid #42C02E;
+          color: #42C02E;
+          background-color: rgba(59, 194, 29, 0.05);
+}
+.tips-card .card-footer .social .user-follow-button[data-v-f3bf5228] {
+        font-size: 15px;
+        padding: 8px 0;
+        width: 100px;
+}
+.arrow[data-v-f3bf5228] {
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  left: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+.arrow i[data-v-f3bf5228] {
+    position: absolute;
+    left: 50%;
+    margin: 0;
+    margin-left: -10px;
+    border-width: 10px;
+    border-color: transparent;
+    padding: 0;
+}
+.arrow em[data-v-f3bf5228] {
+    display: block;
+    position: absolute;
+    left: -9px;
+    border-width: 9px;
+    border-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+.arrow-type-top[data-v-f3bf5228] {
+  bottom: 1px;
+}
+.arrow-type-top i[data-v-f3bf5228] {
+    border-top-color: #d9d9d9;
+    border-style: solid dashed dashed;
+    top: 0;
+}
+.arrow-type-top em[data-v-f3bf5228] {
+    border-style: solid dashed dashed;
+    border-top-color: #ffffff;
+    top: -10px;
+}
+.arrow-type-bottom[data-v-f3bf5228] {
+  top: 1px;
+}
+.arrow-type-bottom i[data-v-f3bf5228] {
+    border-bottom-color: #d9d9d9;
+    border-style: dashed dashed solid;
+    top: -10px;
+}
+.arrow-type-bottom em[data-v-f3bf5228] {
+    border-style: dashed dashed solid;
+    border-bottom-color: #ffffff;
+    top: -8px;
+}
+.reader-night-mode .tips-card-loading[data-v-f3bf5228] {
+  background-color: #3F3F3F;
+  border-color: #2F2F2F;
+}
+.reader-night-mode .tips-card-loading .avatar[data-v-f3bf5228], .reader-night-mode .tips-card-loading .name[data-v-f3bf5228], .reader-night-mode .tips-card-loading .text[data-v-f3bf5228], .reader-night-mode .tips-card-loading .text-delay[data-v-f3bf5228], .reader-night-mode .tips-card-loading .count[data-v-f3bf5228], .reader-night-mode .tips-card-loading .type[data-v-f3bf5228], .reader-night-mode .tips-card-loading .button[data-v-f3bf5228] {
+    background-color: #545454;
+}
+.reader-night-mode .tips-card[data-v-f3bf5228] {
+  background-color: #3F3F3F;
+  border-color: #2F2F2F;
+}
+.reader-night-mode .tips-card .card-content .summary .name .nickname[data-v-f3bf5228] {
+    color: #C8C8C8;
+}
+.reader-night-mode .tips-card .card-content .summary .name .nickname[data-v-f3bf5228]:hover {
+      color: #ffffff;
+}
+.reader-night-mode .tips-card .card-content .summary .intro[data-v-f3bf5228] {
+    color: #C8C8C8;
+}
+.reader-night-mode .tips-card .card-footer[data-v-f3bf5228] {
+    border-top-color: #2F2F2F;
+}
+.reader-night-mode .tips-card .card-footer .profile div .count[data-v-f3bf5228] {
+      color: #C8C8C8;
+}
+.reader-night-mode .arrow.arrow-type-top em[data-v-f3bf5228] {
+  border-top-color: #3F3F3F;
+}
+.reader-night-mode .arrow.arrow-type-top i[data-v-f3bf5228] {
+  border-top-color: #2F2F2F;
+}
+.reader-night-mode .arrow.arrow-type-bottom em[data-v-f3bf5228] {
+  border-bottom-color: #3F3F3F;
+}
+.reader-night-mode .arrow.arrow-type-bottom i[data-v-f3bf5228] {
+  border-bottom-color: #2F2F2F;
+}
+</style><style type="text/css">
+.v-tooltip-container,
+.v-tooltip-content {
+  display: inline-block;
+}
+.v-tooltip-container {
+  position: relative;
+}
+.v-tooltip-container .v-tooltip-content {
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+.v-tooltip-container .v-tooltip-wrap {
+    position: absolute;
+}
+.v-tooltip-container .v-tooltip-wrap.v-tooltip-wrap-top {
+      bottom: 100%;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+              transform: translateX(-50%);
+      padding-bottom: 10px;
+}
+.v-tooltip-container .v-tooltip-wrap.v-tooltip-wrap-bottom {
+      top: 100%;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+              transform: translateX(-50%);
+      padding-top: 10px;
+}
+.v-tooltip-container .v-tooltip-wrap.v-tooltip-wrap-left {
+      top: 50%;
+      right: 100%;
+      -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+              transform: translateY(-50%);
+      padding-right: 10px;
+}
+.v-tooltip-container .v-tooltip-wrap.v-tooltip-wrap-right {
+      top: 50%;
+      left: 100%;
+      -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+              transform: translateY(-50%);
+      padding-left: 10px;
+}
+.v-tooltip-container .v-tooltip-wrap.v-tooltip-wrap-top-start {
+      bottom: 100%;
+      left: 0;
+      padding-bottom: 10px;
+}
+.v-tooltip-container .v-tooltip-wrap.v-tooltip-wrap-top-end {
+      bottom: 100%;
+      right: 0;
+      padding-bottom: 10px;
+}
+.v-tooltip-container .v-tooltip-wrap.v-tooltip-wrap-bottom-start {
+      top: 100%;
+      left: 0;
+      padding-top: 10px;
+}
+.v-tooltip-container .v-tooltip-wrap.v-tooltip-wrap-bottom-end {
+      top: 100%;
+      right: 0;
+      padding-top: 10px;
+}
+.v-tooltip-container .v-tooltip-wrap.v-tooltip-wrap-left-start {
+      top: 0;
+      right: 100%;
+      padding-right: 10px;
+}
+.v-tooltip-container .v-tooltip-wrap.v-tooltip-wrap-left-end {
+      bottom: 0;
+      right: 100%;
+      padding-right: 10px;
+}
+.v-tooltip-container .v-tooltip-wrap.v-tooltip-wrap-right-start {
+      top: 0;
+      left: 100%;
+      padding-left: 10px;
+}
+.v-tooltip-container .v-tooltip-wrap.v-tooltip-wrap-right-end {
+      bottom: 0;
+      left: 100%;
+      padding-left: 10px;
+}
+</style><style type="text/css">
+@charset "UTF-8";
+/*
+ * 变量
+*/
+.like-button[data-v-cdecbe24] {
+  position: relative;
+  padding-left: 23px;
+}
+.like-button[data-v-cdecbe24]:before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: -16px;
+    width: 50px;
+    height: 50px;
+    background-image: url(//cdn2.jianshu.io/assets/web/zan_animation_steps-8d65a474b670eb6a022516f4e0b8e9a4.png);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 1050px 50px;
+}
+.like-button[data-v-cdecbe24]:hover:before {
+    background-position: -50px;
+}
+.like-button.zan-animation span[data-v-cdecbe24], .like-button.active span[data-v-cdecbe24] {
+    color: #333333;
+}
+body.reader-night-mode .like-button.zan-animation span[data-v-cdecbe24], body.reader-night-mode .like-button.active span[data-v-cdecbe24] {
+      color: #C8C8C8;
+}
+.like-button.zan-animation[data-v-cdecbe24]:before {
+    -webkit-animation: likeBlast-data-v-cdecbe24 0.6s 1 steps(19);
+            animation: likeBlast-data-v-cdecbe24 0.6s 1 steps(19);
+    background-position: right;
+}
+@-webkit-keyframes likeBlast {
+0% {
+    background-position: -50px;
+}
+100% {
+    background-position: right;
+}
+}
+@keyframes likeBlast-data-v-cdecbe24 {
+0% {
+    background-position: -50px;
+}
+100% {
+    background-position: right;
+}
+}
+.like-button.active[data-v-cdecbe24]:before {
+    background-position: right;
+}
+</style></head>
+
+  <!-- 只给10%的用户添加代码 -->
+  <!-- ###第四范式-智能推荐：代码直接复制 无需修改参数### -->
+  <!-- ###功能：上报内容并反馈用户行为### -->
+  <!--
+  -->
+  <body lang="zh-CN" class="reader-black-font">
+    <!-- 全局顶部导航栏 -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="width-limit">
+    <!-- 左上方 Logo -->
+    <a class="logo" href="https://www.jianshu.com/"><img src="./C++进阶-STL容器，你看我就够了 - 简书_files/nav-logo-4c7bbafe27adc892f3046e6978459bac.png" alt="Nav logo"></a>
+
+    <!-- 右上角 -->
+      <!-- 未登录显示登录/注册/写文章 -->
+      <a class="btn write-btn" target="_blank" href="https://www.jianshu.com/writer#/">
+        <i class="iconfont ic-write"></i>写文章
+</a>      <a class="btn sign-up" id="sign_up" href="https://www.jianshu.com/sign_up">注册</a>
+      <a class="btn log-in" id="sign_in" href="https://www.jianshu.com/sign_in">登录</a>
+
+    <!-- 如果用户登录，显示下拉菜单 -->
+
+    <div class="nqzzJ71pC-jOnJKAfdtr6_0"><a class="_3tScN0zmSdGLaUAH4SxTbM_0"><img src="./C++进阶-STL容器，你看我就够了 - 简书_files/nav_jsds_beta-eeb44d165b8ba37680fdb7e65ae17ae4.png" class="_3f806byixOPpOPWnx8HiQP_0"></a> <!----></div>
+
+    <div class="style-mode"><a class="style-mode-btn"><i class="iconfont ic-navigation-mode"></i></a> <div class="popover-modal" style="left: 0px; display: none;"><div class="meta"><i class="iconfont ic-navigation-night"></i><span>夜间模式</span></div> <div class="switch day-night-group"><a class="switch-btn">开</a> <a class="switch-btn active">关</a></div> <hr> <div class="switch font-family-group"><a class="switch-btn font-song">宋体</a> <a class="switch-btn font-hei active">黑体</a></div> <div class="switch"><a class="switch-btn active">简</a> <a class="switch-btn">繁</a></div></div></div>
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="nav navbar-nav">
+            <li class="tab ">
+              <a href="https://www.jianshu.com/">
+                <span class="menu-text">首页</span><i class="iconfont ic-navigation-discover menu-icon"></i>
+</a>            </li>
+            <li class="tab ">
+              <a id="web-nav-app-download-btn" class="app-download-btn" href="https://www.jianshu.com/apps?utm_medium=desktop&amp;utm_source=navbar-apps"><span class="menu-text">下载App</span><i class="iconfont ic-navigation-download menu-icon"></i></a>
+            </li>
+          <li class="search">
+            <form target="_blank" action="https://www.jianshu.com/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+              <input type="text" name="q" id="q" value="" autocomplete="off" placeholder="搜索" class="search-input">
+              <a class="search-btn" href="javascript:void(null)"><i class="iconfont ic-search"></i></a>
+</form>          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    
+<div class="note">
+  <div id="note-fixed-ad-container">
+    <div id="fixed-ad-container">
+      <div style="display: block;"><a target="_blank" href="https://www.jianshu.com/apps/redirect?utm_source=side-banner-click" id="web-note-ad-fixed"><span class="close">×</span></a></div>
+      <div><!----> <!----></div>
+      <a href="http://e.cn.miaozhen.com/r/k=2110413&amp;p=7L9Gn&amp;dx=__IPDX__&amp;rt=2&amp;ns=__IP__&amp;ni=__IESID__&amp;v=__LOC__&amp;xa=__ADPLATFORM__&amp;tr=__REQUESTID__&amp;mo=__OS__&amp;m0=__OPENUDID__&amp;m0a=__DUID__&amp;m1=__ANDROIDID1__&amp;m1a=__ANDROIDID__&amp;m2=__IMEI__&amp;m4=__AAID__&amp;m5=__IDFA__&amp;m6=__MAC1__&amp;m6a=__MAC__&amp;vo=3f2e070eb&amp;vr=2&amp;o=https%3A%2F%2Fwww.jianshu.com%2Fp%2Fee05f7eff678" target="_blank" class="yuxi-fixed-ad" style="display: none;"><div class="img"></div> <span class="ad-badge">广告</span></a>
+       <div id="zhangxin-fixed-ad"></div>
+      <div id="_so_pdsBy_0"></div>
+    </div>
+  </div>
+  <div class="post">
+    <div class="article">
+        <h1 class="title">C++进阶-STL容器，你看我就够了</h1>
+
+        <!-- 作者区域 -->
+        <div class="author">
+          <a class="avatar" href="https://www.jianshu.com/u/ebb60643b57c">
+            <img src="./C++进阶-STL容器，你看我就够了 - 简书_files/b7b289fa527e" alt="96">
+</a>          <div class="info">
+            <span class="name"><a href="https://www.jianshu.com/u/ebb60643b57c">一月二十三</a></span>
+            <!-- 关注用户按钮 -->
+            <a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>
+            <!-- 文章数据信息 -->
+            <div class="meta">
+              <!-- 简书钻 -->
+                <span class="jsd-meta">
+                  <i class="iconfont ic-paid1"></i> 1.8
+                </span>
+              <!-- 如果文章更新时间大于发布时间，那么使用 tooltip 显示更新时间 -->
+                <span class="publish-time" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="最后编辑于 2017.12.10 21:28">2017.10.19 16:32*</span>
+              <span class="wordage">字数 4294</span>
+            <span class="views-count">阅读 7674</span><span class="comments-count">评论 3</span><span class="likes-count">喜欢 93</span></div>
+          </div>
+          <!-- 如果是当前作者，加入编辑按钮 -->
+        </div>
+
+
+        <!-- 文章内容 -->
+        <div data-note-content="" class="show-content">
+          <div class="show-content-free">
+            <p>STL(标准模板库)，是目前C++内置支持的library。它的底层利用了C++类模板和函数模板的机制，由三大部分组成：容器、算法和迭代器。</p>
+<p>目前STL有六大组件</p>
+<ul>
+<li>容器 container</li>
+<li>算法 algorthm</li>
+<li>迭代器 iterator</li>
+<li>仿函数 function object</li>
+<li>适配器 adaptor</li>
+<li>空间配置器 allocator</li>
+</ul>
+<p>下面，我们会一一进行介绍。</p>
+<h2>STL初探</h2>
+<p>容器是STL中很重要的一种数据结构。常见的容器包括</p>
+<ul>
+<li>vector容器</li>
+<li>deque双端数组</li>
+<li>stack栈模型</li>
+<li>queue队列模型</li>
+<li>list链表模型</li>
+<li>priotriy_queue优先级队列</li>
+<li>set与multiset容器</li>
+<li>map与multimap容器</li>
+</ul>
+<p>除了容器，STL还封装了强大的算法，能够实现查找、删除、替换、删除等很多常见操作。后面会重点讲解。</p>
+<p>另外，迭代器也是STL重要的一环，通过迭代器，我们可以很方便对容器中的元素进行遍历，以及操作容器。后面我们会穿插讲解迭代器。</p>
+<h2>STL中的string</h2>
+<p><code>string</code>是STL的字符串类型，在C语言中，我们通常用<code>char *</code>或者<code>char[]</code>字符数组来表示字符串。C++的<code>string</code>和C语言的<code>char *</code>有什么区别呢？</p>
+<ul>
+<li>
+<code>string</code>是一个类，<code>char *</code>是指向字符的指针</li>
+<li>
+<code>string</code>封装了<code>char *</code>,管理这个字符串，是一个<code>char *</code>类型的容器</li>
+<li>
+<code>string</code>不用考虑内存释放和数组越界</li>
+<li>
+<code>string</code>提供了一些列的字符串操作函数</li>
+</ul>
+<h4>string的构造函数</h4>
+<p>既然string是一个类，那么也就有构造函数，我们研究下string的构造函数。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    <span class="hljs-comment">//通过const char * 初始化</span>
+    <span class="hljs-built_in">string</span> s1 = <span class="hljs-string">"aaaa"</span>;
+    
+    <span class="hljs-comment">//构造函数初始化</span>
+    <span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s2</span><span class="hljs-params">(<span class="hljs-string">"bbbbb"</span>)</span></span>;
+    
+    <span class="hljs-comment">//通过拷贝构造函数来初始化对象s3</span>
+    <span class="hljs-built_in">string</span> s3 = s2;
+    
+    <span class="hljs-comment">//用10个'a'字符来初始化字符串</span>
+    <span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s4</span><span class="hljs-params">(<span class="hljs-number">10</span>, <span class="hljs-string">'a'</span>)</span></span>;
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h4>字符串的遍历</h4>
+<p>字符串的遍历，有三种遍历的方式</p>
+<ul>
+<li>数组方式遍历，通过[]操作符遍历 （不会抛出异常）</li>
+<li>at()方法遍历，根据index取值       (会抛出异常)</li>
+<li>通过STL迭代器遍历</li>
+</ul>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    <span class="hljs-comment">//创建字符串对象</span>
+    <span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">str</span><span class="hljs-params">(<span class="hljs-string">"abcdefg"</span>)</span></span>;
+    
+    <span class="hljs-comment">//数组形式遍历</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; str.length(); i++) {
+        <span class="hljs-built_in">cout</span>&lt;&lt; str[i] &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }
+    
+    <span class="hljs-comment">//at方法遍历</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; str.length(); i++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; str.at(i) &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }
+    
+    <span class="hljs-comment">//迭代器遍历</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">string</span>::iterator it = str.begin(); it != str.end(); it++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>数组方式和at方法方式，有一个明显的不同</p>
+<ul>
+<li>数组方式，如果出现越界或者其他错误，不会抛出异常，程序直接终端。</li>
+<li>at()方法遍历，出现越界或其他错误，会抛出异常，程序可以处理异常。</li>
+</ul>
+<p>迭代器其实可以看作是一个字符的指针，上个例子中<code>string::iterator it = str.begin()</code>就是定义一个string类型的迭代器，指向<code>str</code>的第一次位置。<code>*it</code>就表示当前的字符。注意<code>str.end()</code>表示字符串最后一个字符的后面一个位置。如果<code>it == str.end()</code>就表示已经遍历到终点了。</p>
+<h4>string与char *的转换</h4>
+<p>string提供了成员函数<code>c_str</code>来将string对象转化成<code>const char *</code>。string提供了<code>copy(buf,size,begin)</code>成员函数来讲string从<code>begin</code>位置开始的<code>size</code>个字符拷贝到<code>buf</code>中。需要注意的是:</p>
+<ul>
+<li>如果buf容纳不下，会越界</li>
+<li>拷贝过去后，不会转变成C风格的字符串，也就是不会在buf后面添加'\0'</li>
+</ul>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    <span class="hljs-comment">//1 string转char *</span>
+    <span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">str</span><span class="hljs-params">(<span class="hljs-string">"aaaaaa"</span>)</span></span>;
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *p = str.c_str();
+    
+    <span class="hljs-comment">//2 char *转string</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *p1 = <span class="hljs-string">"12345"</span>;
+    <span class="hljs-built_in">string</span> str2 = p1;
+    
+    <span class="hljs-comment">//3 string拷贝到buf[]中</span>
+    <span class="hljs-keyword">char</span> buf[<span class="hljs-number">128</span>] = {<span class="hljs-number">0</span>};
+    <span class="hljs-comment">//从0开始，拷贝3个字符到buf指向的内存空间</span>
+    <span class="hljs-comment">//如果buf空间容纳不下，会越界</span>
+    <span class="hljs-comment">//拷贝过去时，不会给buf末尾添加\0</span>
+    str.copy(buf, <span class="hljs-number">3</span>, <span class="hljs-number">0</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h4>string的拼接</h4>
+<p>string为我们提供了两种字符串拼接方式，一种是重写了 <code>+</code> 操作符，我们可以直接将连个字符串相加，类似于java的语法。另一种是string提供了成员函数<code>append()</code>供我们拼接连个字符串.</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    <span class="hljs-built_in">string</span> s1 = <span class="hljs-string">"123456"</span>;
+    <span class="hljs-built_in">string</span> s2 = <span class="hljs-string">"abcdef"</span>;
+    
+    <span class="hljs-comment">//直接使用加号运算符拼接</span>
+    <span class="hljs-built_in">string</span> s3 = s1 + s2;
+    
+    <span class="hljs-comment">//使用成员函数拼接</span>
+    <span class="hljs-built_in">string</span> s4 = s1.append(s2);
+    
+    <span class="hljs-built_in">cout</span>&lt;&lt;s3&lt;&lt;<span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span>&lt;&lt;s4&lt;&lt;<span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h4>string的查找和替换</h4>
+<p>string类提供了<code>find</code>函数，用来查找字符串中指定的字符。提供了<code>replace</code>函数，用来替换字符串中指定位置的字符串。</p>
+<p><code>replace</code>函数是，先删除指定位置，指定长度的字符，然后在当前指定位置插入新的字符。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    
+    <span class="hljs-built_in">string</span> s1 = <span class="hljs-string">"hello hello hello hello hello hello 1234 7876"</span>;
+    
+    <span class="hljs-comment">//从0位置开始查找第一个hello出现的首位位置</span>
+    <span class="hljs-keyword">size_t</span> index1 = s1.find(<span class="hljs-string">"hello"</span>,<span class="hljs-number">0</span>);
+    <span class="hljs-built_in">cout</span> &lt;&lt; index1 &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//查找第一个hello出现时的首位位置</span>
+    <span class="hljs-keyword">size_t</span> index2 = s1.find_first_of(<span class="hljs-string">"hello"</span>);
+    <span class="hljs-built_in">cout</span> &lt;&lt; index2 &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//查找最后一个hello出现时的末尾位置</span>
+    <span class="hljs-keyword">size_t</span> index3 = s1.find_last_of(<span class="hljs-string">"hello"</span>);
+    <span class="hljs-built_in">cout</span> &lt;&lt; index3 &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//求hello出现的次数，以及对应的下标</span>
+    <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">size_t</span> offindex = s1.find(<span class="hljs-string">"hello"</span>,<span class="hljs-number">0</span>);
+    <span class="hljs-keyword">while</span> (offindex != <span class="hljs-built_in">string</span>::npos) {  <span class="hljs-comment">//如果 offindex != -1</span>
+        <span class="hljs-comment">//找到了</span>
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"索引:"</span> &lt;&lt; offindex &lt;&lt;<span class="hljs-built_in">endl</span>;
+        count++;
+        offindex++;
+        offindex = s1.find(<span class="hljs-string">"hello"</span>, offindex);
+    }
+    
+    <span class="hljs-comment">//把hello替换成welcome</span>
+    <span class="hljs-keyword">size_t</span> offindex1 = s1.find(<span class="hljs-string">"hello"</span>, <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">while</span> (offindex1 != <span class="hljs-built_in">string</span>::npos) {
+        
+        <span class="hljs-comment">//从offindex1的位置开始删除5个位置，并插入新的字符串welcome</span>
+        s1.replace(offindex1, <span class="hljs-built_in">strlen</span>(<span class="hljs-string">"hello"</span>), <span class="hljs-string">"welcome"</span>);
+        
+        <span class="hljs-comment">//从后面的位置开始</span>
+        offindex1 += <span class="hljs-built_in">strlen</span>(<span class="hljs-string">"welcome"</span>);
+        
+        <span class="hljs-comment">//继续查找</span>
+        offindex1 = s1.find(<span class="hljs-string">"hello"</span>, offindex1);
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"替换后的字符串："</span> &lt;&lt; s1 &lt;&lt;<span class="hljs-built_in">endl</span>;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h4>string区间删除和插入</h4>
+<p>string提供了<code>insert</code>和<code>erase</code>分别实现插入和删除操作。</p>
+<p>插入：pos位置插入字符串s，返回新的string。</p>
+<ul>
+<li><code>string &amp;insert(int pos, const char *s)</code></li>
+<li><code>string &amp;insert(int pos, const string &amp;s)</code></li>
+</ul>
+<p>插入：pos位置插入n个字符c，返回string。</p>
+<ul>
+<li><code>string &amp;insert(int pos, int n, char c)</code></li>
+</ul>
+<p>删除：删除从pos位置开始的n个字符，返回新的string</p>
+<ul>
+<li><code>string &amp;erase(int pos, int n)</code></li>
+</ul>
+<p>删除：删除指定迭代器的位置，返回当前迭代器位置</p>
+<ul>
+<li><code>string::iterator erase(string::iterator it)</code></li>
+</ul>
+<p>删除：删除迭代器之间的字符，左闭右开区间</p>
+<ul>
+<li><code>string::iterator erase(string::iterator beginIt, string::iterator endIt)</code></li>
+</ul>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    <span class="hljs-built_in">string</span> s1 = <span class="hljs-string">"hello1 world!"</span>;
+    
+    <span class="hljs-comment">//1 删除字符串中的'1'</span>
+    <span class="hljs-comment">//---通过find函数，查找'1'所在的迭代器位置</span>
+    <span class="hljs-built_in">string</span>::iterator it = find(s1.begin(), s1.end(), <span class="hljs-string">'1'</span>);
+    <span class="hljs-comment">//---删除</span>
+    <span class="hljs-keyword">if</span> (it != s1.end()) {
+        s1.erase(it);
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; s1 &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//2 删除起始迭代器位置的字符</span>
+    s1.erase(s1.begin(), s1.begin() + <span class="hljs-number">3</span>);
+    <span class="hljs-built_in">cout</span> &lt;&lt; s1 &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//3 在0位置插入"AAA"</span>
+    s1.insert(<span class="hljs-number">0</span>, <span class="hljs-string">"AAA"</span>);
+    <span class="hljs-built_in">cout</span> &lt;&lt; s1 &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h4>string算法相关</h4>
+<p>目前常见的string的算法是大小写转换。一般使用函数<code>transform</code>来进行转换。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    <span class="hljs-built_in">string</span> s1 = <span class="hljs-string">"abcdefg"</span>;
+    <span class="hljs-built_in">string</span> s2 = <span class="hljs-string">"AEDLFLKJDLKJFL"</span>;
+    
+    <span class="hljs-comment">//小写全部转换成大写,转换的结果放在s1.begin()的位置,后面的操作需要强制转换成指定的函数类型</span>
+    transform(s1.begin(), s1.end(), s1.begin(), (<span class="hljs-keyword">int</span> (*)(<span class="hljs-keyword">int</span>))<span class="hljs-built_in">toupper</span>);
+    <span class="hljs-built_in">cout</span> &lt;&lt; s1 &lt;&lt;<span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//大写全部转换成小写</span>
+    transform(s2.begin(), s2.end(), s2.begin(), (<span class="hljs-keyword">int</span> (*)(<span class="hljs-keyword">int</span>))<span class="hljs-built_in">tolower</span>);
+    <span class="hljs-built_in">cout</span> &lt;&lt; s2 &lt;&lt;<span class="hljs-built_in">endl</span>;
+   
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+</code></pre>
+<h2>STL中的vector容器</h2>
+<p><code>vector</code>是将元素放到动态数组中加以管理的容器。<code>vector</code>容器可以随机存取元素，也就是说支持<code>[]</code>运算符和<code>at</code>方式存取。</p>
+<ul>
+<li>
+<code>vector</code>在尾部添加或者移除元素非常快，在中间操作非常耗时，因为它需要移动元素</li>
+</ul>
+<h4>vector的基本用法</h4>
+<p>既然vector是容器，那么就可以向这个容器添加删除元素。</p>
+<p>基本用法：</p>
+<ul>
+<li>
+<code>front()</code>返回头部元素的引用，可以当左值</li>
+<li>
+<code>back()</code>返回尾部元素的引用，可以当左值</li>
+<li>
+<code>push_back()</code>添加元素，只能尾部添加</li>
+<li>
+<code>pop_back()</code>移除元素，只能在尾部移除</li>
+</ul>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    <span class="hljs-comment">//定义一个vector容器</span>
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v1;
+    
+    <span class="hljs-comment">//插入元素(尾部插入)</span>
+    v1.push_back(<span class="hljs-number">1</span>);
+    v1.push_back(<span class="hljs-number">2</span>);
+    v1.push_back(<span class="hljs-number">3</span>);
+    
+    <span class="hljs-comment">//迭代器遍历打印</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = v1.begin(); it != v1.end(); it++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="hljs-string">" "</span>;
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//修改头部元素的值(front()返回是引用，可以当左值)</span>
+    v1.front() = <span class="hljs-number">44</span>;
+    
+    <span class="hljs-comment">//输出头部元素</span>
+    <span class="hljs-built_in">cout</span>&lt;&lt; <span class="hljs-string">"头部元素:"</span> &lt;&lt; v1.front() &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//修改尾部的值(back()返回是引用，可以当左值)</span>
+    v1.back() = <span class="hljs-number">99</span>;
+    
+    <span class="hljs-comment">//输出尾部元素</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"尾部元素"</span> &lt;&lt; v1.back() &lt;&lt;<span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//删除元素(从尾部删除)</span>
+    v1.pop_back();
+    
+    <span class="hljs-comment">//迭代器遍历打印</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = v1.begin(); it != v1.end(); it++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="hljs-string">" "</span>;
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h4>vector的初始化</h4>
+<p>vector有4种方式初始化，有直接初始化，也要通过拷贝构造函数初始化。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+
+    <span class="hljs-comment">//直接构造函数初始化</span>
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v1;
+    v1.push_back(<span class="hljs-number">1</span>);
+    v1.push_back(<span class="hljs-number">2</span>);
+    v1.push_back(<span class="hljs-number">3</span>);
+    v1.push_back(<span class="hljs-number">4</span>);
+    
+    <span class="hljs-comment">//通过拷贝构造函数初始化</span>
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v2 = v1;
+    
+    <span class="hljs-comment">//使用部分元素来构造</span>
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v3(v1.begin(), v1.begin() + <span class="hljs-number">1</span>);
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v4(v1.begin(), v1.end());
+    
+    <span class="hljs-comment">//存放三个元素，每个元素都是9</span>
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v5(<span class="hljs-number">3</span>,<span class="hljs-number">9</span>);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h4>vector的遍历</h4>
+<p>vector的遍历有多种方式，可以根据<code>[]</code>或者迭代器遍历。</p>
+<p>需要主要的是：</p>
+<ul>
+<li>
+<code>[]</code>方式，如果越界或出现其他错误，不会抛出异常，可能会崩溃，可能数据随机出现</li>
+<li>
+<code>at</code>方式，如果越界或出现其他错误，会抛出异常，需要捕获异常并处理</li>
+<li>迭代器提供了逆向遍历，可以通过迭代器来实现逆向遍历，当然上面两种方式也可以</li>
+</ul>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    <span class="hljs-comment">//创建vector</span>
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v1;
+    
+    <span class="hljs-comment">//插入元素</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+        v1.push_back(i);
+    }
+    
+    <span class="hljs-comment">//遍历-[]取值</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; v1.size(); i++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; v1[i] &lt;&lt; <span class="hljs-string">" "</span>;
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+   
+    <span class="hljs-comment">//遍历-at取值</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; v1.size(); i++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; v1.at(i) &lt;&lt; <span class="hljs-string">" "</span>;
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+
+    <span class="hljs-comment">//遍历-迭代器遍历</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = v1.begin(); it != v1.end(); it++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="hljs-string">" "</span>;
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//遍历-迭代器逆向遍历</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::reverse_iterator it = v1.rbegin(); it != v1.rend(); it++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="hljs-string">" "</span>;
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//测试越界</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"[]越界:"</span> &lt;&lt; v1[<span class="hljs-number">20</span>] &lt;&lt; <span class="hljs-built_in">endl</span>;      <span class="hljs-comment">//不会抛出异常，可能会崩溃，可能会乱码</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"at越界:"</span> &lt;&lt; v1.at(<span class="hljs-number">20</span>) &lt;&lt; <span class="hljs-built_in">endl</span>;   <span class="hljs-comment">//会抛出异常，需要捕获异常</span>
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h4>vector的push_back强化</h4>
+<p>push_back是在当前vector的内存末尾拷贝元素进入容器。注意这个地方可能产生浅拷贝，所以容器中的对象要支持拷贝操作。另外，如果vector初始化了个数，而不初始化具体的值，push_back也只会在最后面追加。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    <span class="hljs-comment">//初始化10个元素的容器</span>
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v(<span class="hljs-number">10</span>);
+    
+    <span class="hljs-comment">//打印容器大小</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; v.size() &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//push_back添加元素</span>
+    v.push_back(<span class="hljs-number">100</span>);
+    
+    <span class="hljs-comment">//打印容器大小</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; v.size() &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//遍历后的结果是  0 0 0 0 0 0 0 0 0 0 100</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = v.begin(); it != v.end(); it++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="hljs-string">" "</span>;
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h4>vector的元素删除</h4>
+<p>vector的删除，是根据位置进行删除，如果想要删除某个元素，需要找到当前元素的迭代器位置，再进行删除。</p>
+<blockquote>
+<p><code>erase(iterator)</code>函数，删除后会返回当前迭代器的下一个位置。</p>
+</blockquote>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    <span class="hljs-comment">//1 创建容器并初始化</span>
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v1(<span class="hljs-number">10</span>);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; v1.size(); i++) {
+        v1[i] = i;
+    }
+    
+    <span class="hljs-comment">//2 区间删除</span>
+    <span class="hljs-comment">//--2.1 删除前3个元素</span>
+    v1.erase(v1.begin(), v1.begin() + <span class="hljs-number">3</span>);
+    
+    <span class="hljs-comment">//--2.2 删除指定位置的元素</span>
+    v1.erase(v1.begin() +<span class="hljs-number">3</span>);
+    
+    <span class="hljs-comment">//3 根据元素的值进行删除,删除值为2的元素</span>
+    v1.push_back(<span class="hljs-number">2</span>);
+    v1.push_back(<span class="hljs-number">2</span>);
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = v1.begin();
+    <span class="hljs-keyword">while</span> (it != v1.end()) {
+        <span class="hljs-keyword">if</span> (*it == <span class="hljs-number">2</span>) {
+            it = v1.erase(it);   <span class="hljs-comment">//删除后，迭代器指针会执行下一个位置并返回。</span>
+        }<span class="hljs-keyword">else</span>{
+            it++;
+        }
+    }
+    
+    <span class="hljs-comment">//4 遍历打印</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = v1.begin(); it != v1.end(); it++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="hljs-string">" "</span>;
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h4>vector的插入元素</h4>
+<p>vector提供了<code>insert</code>函数，结合迭代器位置插入指定的元素。</p>
+<p>如果迭代器位置越界，会抛出异常。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    <span class="hljs-comment">//初始化vector对象</span>
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v1(<span class="hljs-number">10</span>);
+    
+    <span class="hljs-comment">//在指定的位置插入元素10的拷贝</span>
+    v1.insert(v1.begin() + <span class="hljs-number">3</span>, <span class="hljs-number">10</span>);
+    
+    <span class="hljs-comment">//在指定的位置插入3个元素11的拷贝</span>
+    v1.insert(v1.begin(), <span class="hljs-number">3</span>, <span class="hljs-number">11</span>);
+    
+    <span class="hljs-comment">//遍历</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = v1.begin(); it != v1.end(); it++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="hljs-string">" "</span>;
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+</code></pre>
+<h2>STL中的deque容器</h2>
+<p>deque是一个双端数组容器:可以在头部和尾部操作元素。</p>
+<ul>
+<li>
+<code>push_back</code> 从尾部插入元素</li>
+<li>
+<code>push_front</code> 从头部插入元素</li>
+<li>
+<code>pop_back</code> 从尾部删除元素</li>
+<li>
+<code>pop_front</code> 从头部删除元素</li>
+</ul>
+<blockquote>
+<p>知识点：</p>
+<p><code>distance</code>函数可以求出当前的迭代器指针it距离头部的位置，也就是容器的指针</p>
+<p>用法: <code>distance(v1.begin(), it)</code></p>
+</blockquote>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    <span class="hljs-comment">//定义deque对象</span>
+    <span class="hljs-built_in">deque</span>&lt;<span class="hljs-keyword">int</span>&gt; d1;
+    
+    <span class="hljs-comment">//尾部插入元素</span>
+    d1.push_back(<span class="hljs-number">10</span>);
+    d1.push_back(<span class="hljs-number">20</span>);
+    d1.push_back(<span class="hljs-number">30</span>);
+    
+    <span class="hljs-comment">//头部插入元素</span>
+    d1.push_front(<span class="hljs-number">1</span>);
+    d1.push_front(<span class="hljs-number">2</span>);
+    d1.push_front(<span class="hljs-number">3</span>);
+    
+    <span class="hljs-comment">//尾部删除元素</span>
+    d1.pop_back();
+    
+    <span class="hljs-comment">//头部删除元素</span>
+    d1.pop_front();
+    
+    <span class="hljs-comment">//修改头部和尾部的值</span>
+    d1.front() = <span class="hljs-number">111</span>;
+    d1.back()  = <span class="hljs-number">222</span>;
+    
+    <span class="hljs-comment">//查找元素为1的下标</span>
+    <span class="hljs-comment">//通过distance求取下标</span>
+    <span class="hljs-built_in">deque</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = d1.begin();
+    <span class="hljs-keyword">while</span> (it != d1.end()) {
+        <span class="hljs-keyword">if</span> (*it == <span class="hljs-number">1</span>) {
+            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"下标："</span> &lt;&lt; distance(d1.begin(), it) &lt;&lt; <span class="hljs-built_in">endl</span>;
+        }
+        it++;
+    }
+    
+    <span class="hljs-comment">//遍历</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">deque</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = d1.begin(); it != d1.end(); it++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="hljs-string">" "</span>;
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h2>STL中的stack栈容器</h2>
+<p>在数据结构中，栈是一种先入后出的容器，增加元素叫压栈或者入栈。移除元素通常叫做出栈。</p>
+<p>STL提供的stack容器，也是这种基本类型。这里我们演示一下基本元素类型和复杂元素类型。</p>
+<p>▽ 基础数据类型的stack</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    <span class="hljs-comment">//定义stack对象</span>
+    <span class="hljs-built_in">stack</span>&lt;<span class="hljs-keyword">int</span>&gt; s1;
+    
+    <span class="hljs-comment">//入栈</span>
+    s1.push(<span class="hljs-number">1</span>);
+    s1.push(<span class="hljs-number">2</span>);
+    s1.push(<span class="hljs-number">3</span>);
+    s1.push(<span class="hljs-number">4</span>);
+    
+    <span class="hljs-comment">//打印栈顶元素，并出栈</span>
+    <span class="hljs-keyword">while</span> (!s1.empty()) {
+        <span class="hljs-comment">//取出栈顶元素</span>
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"当前栈顶元素"</span> &lt;&lt; s1.top() &lt;&lt; <span class="hljs-built_in">endl</span>;
+        
+        <span class="hljs-comment">//获取栈的大小</span>
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"当前栈的大小"</span> &lt;&lt; s1.size() &lt;&lt; <span class="hljs-built_in">endl</span>;
+        
+        <span class="hljs-comment">//出栈</span>
+        s1.pop();
+    }
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>▽ 复杂数据类型的stack</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-comment">//定义类</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Teacher</span> {</span>
+    
+<span class="hljs-keyword">public</span>:
+    
+    <span class="hljs-keyword">char</span> name[<span class="hljs-number">32</span>];
+    <span class="hljs-keyword">int</span>  age;
+    
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printT</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"age = "</span> &lt;&lt; age &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }
+    
+};
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    Teacher t1, t2, t3;
+    t1.age = <span class="hljs-number">22</span>;
+    t2.age = <span class="hljs-number">33</span>;
+    t3.age = <span class="hljs-number">44</span>;
+    
+    <span class="hljs-comment">//定义栈容器</span>
+    <span class="hljs-built_in">stack</span>&lt;Teacher&gt; s1;
+    
+    <span class="hljs-comment">//入栈</span>
+    s1.push(t1);
+    s1.push(t2);
+    s1.push(t3);
+    
+    <span class="hljs-comment">//出栈并打印</span>
+    <span class="hljs-keyword">while</span> (!s1.empty()) {
+        <span class="hljs-comment">//打印栈顶元素</span>
+        Teacher tmp = s1.top();
+        tmp.printT();
+        
+        <span class="hljs-comment">//出栈</span>
+        s1.pop();
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h2>STL中的queue队列容器</h2>
+<p>队列是一种数据结构，具备队头和队尾。常见的有FIFO（先入先出）队列等。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span>&gt; q;
+    q.push(<span class="hljs-number">1</span>);
+    q.push(<span class="hljs-number">2</span>);
+    q.push(<span class="hljs-number">3</span>);
+    
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"对头元素"</span> &lt;&lt; q.front() &lt;&lt;<span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"队列的大小 "</span> &lt;&lt; q.size() &lt;&lt;<span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-keyword">while</span> (!q.empty())�{
+    
+        <span class="hljs-keyword">int</span> tmp = q.front();
+        <span class="hljs-built_in">cout</span> &lt;&lt; tmp &lt;&lt; <span class="hljs-string">" "</span>;
+        q.pop();
+    }
+}
+
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Teacher</span>
+{</span>
+<span class="hljs-keyword">public</span>：
+    <span class="hljs-keyword">int</span> age;
+    <span class="hljs-keyword">char</span> name[<span class="hljs-number">32</span>];
+    
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printT</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"age ："</span> &lt;&lt; age &lt;&lt;<span class="hljs-built_in">endl</span>;
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    Teacher t1,t2,t3;
+    t1.age = <span class="hljs-number">31</span>;
+    t2.age = <span class="hljs-number">32</span>;
+    t3.age = <span class="hljs-number">33</span>;
+    
+    <span class="hljs-built_in">queue</span>&lt;Teacher &gt; q;
+    q.push(t1);
+    q.push(t2);
+    q.push(t3);
+    
+    <span class="hljs-keyword">while</span> (!q.empty())�{
+    
+        Teacher tmp = q.front();
+        tmp.printT();
+        q.pop();
+    }
+    
+}
+</code></pre>
+<h2>STL中的list容器</h2>
+<p>list容器具有如下特性：</p>
+<ul>
+<li>可以在头部和尾部插入和删除元素</li>
+<li>不能随机访问元素，也就是迭代器只能只能++,不能一次性跳转</li>
+</ul>
+<h4>list的基本操作</h4>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    <span class="hljs-comment">//创建list对象</span>
+    <span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt; l;
+    
+    <span class="hljs-comment">//尾部添加元素</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+        l.push_back(i);
+    }
+    
+    <span class="hljs-comment">//头部添加元素</span>
+    l.push_front(<span class="hljs-number">111</span>);
+    
+    <span class="hljs-comment">//遍历</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = l.begin(); it != l.end(); it++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="hljs-string">" "</span>;
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//list不能随机访问</span>
+    <span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = l.begin();
+    it++;
+    it++;
+    <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt;<span class="hljs-built_in">endl</span>;
+<span class="hljs-comment">//    it = it + 1;  //编译报错，不能随机访问</span>
+<span class="hljs-comment">//    it = it + 5;  //编译报错，不能随机访问</span>
+    
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h4>list的删除</h4>
+<p>list提供了两个函数用来删除元素,分别是<code>erase</code>和<code>remove</code>。</p>
+<ul>
+<li>
+<code>erase</code>是通过位置或者区间来删除,主要结合迭代器指针来操作</li>
+<li>
+<code>remove</code>是通过值来删除</li>
+</ul>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    
+    <span class="hljs-comment">//创建list对象</span>
+    <span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt; l;
+    
+    <span class="hljs-comment">//添加数据</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+        l.push_back(i);
+    }
+    l.push_back(<span class="hljs-number">100</span>);
+    l.push_back(<span class="hljs-number">100</span>);
+    
+    <span class="hljs-comment">//删除头部元素</span>
+    l.erase(l.begin());
+    
+    <span class="hljs-comment">//删除某个区间</span>
+    <span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = l.begin();
+    it++;
+    it++;
+    it++;
+    l.erase(l.begin(), it);
+    
+    <span class="hljs-comment">//移除值为100的所有元素</span>
+    l.remove(<span class="hljs-number">100</span>);
+    
+    <span class="hljs-comment">//遍历</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = l.begin(); it != l.end(); it++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="hljs-string">" "</span>;
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h2>STL中的priority_queue优先级队列容器</h2>
+<p>优先级队列分为：最小值优先队列和最大值优先队列。</p>
+<p>此处的最大值、最小值是指队头的元素（增序、降序）。默认，是创建最大值优先级队列。</p>
+<p>定义优先级的方法：</p>
+<ul>
+<li>
+<code>priority_queue&lt;int&gt;</code>默认定义int类型的最大值队列</li>
+<li>
+<code>priority_queue&lt;int, vector&lt;int&gt;, less&lt;int&gt;&gt;</code>定义int型的最大值优先队列</li>
+<li>
+<code>priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt;</code>定义int型的最小值队列</li>
+</ul>
+<p>上面的定义中，<code>less</code>和<code>greater</code>相当于谓词，是预定义好的排序函数，我们称之为“仿函数”。后面会介绍它的用法。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">//定义优先级队列(默认是最大值优先级队列)</span>
+    priority_queue&lt;<span class="hljs-keyword">int</span>&gt; p1;
+    
+    <span class="hljs-comment">//定义一个最大优先级队列</span>
+    <span class="hljs-comment">//less是提前定义好的预定义函数 相当于谓词</span>
+    priority_queue&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;, less&lt;<span class="hljs-keyword">int</span>&gt;&gt; p2;
+    
+    <span class="hljs-comment">//定义一个最小值优先级队列v</span>
+    priority_queue&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;, greater&lt;<span class="hljs-keyword">int</span>&gt;&gt; p3;
+    
+    <span class="hljs-comment">//给默认的最大优先级队列入栈</span>
+    p1.push(<span class="hljs-number">33</span>);
+    p1.push(<span class="hljs-number">11</span>);
+    p1.push(<span class="hljs-number">55</span>);
+    p1.push(<span class="hljs-number">22</span>);
+    
+    <span class="hljs-comment">//打印最大优先级的对头元素</span>
+    <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"对头元素:"</span>&lt;&lt; p1.top() &lt;&lt;<span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"队列的大小:"</span>&lt;&lt; p1.size() &lt;&lt;<span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//给最小值优先级队列入栈</span>
+    p3.push(<span class="hljs-number">33</span>);
+    p3.push(<span class="hljs-number">11</span>);
+    p3.push(<span class="hljs-number">55</span>);
+    p3.push(<span class="hljs-number">22</span>);
+    
+    <span class="hljs-comment">//打印最小优先级队列的对头元素</span>
+    <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"对头元素:"</span>&lt;&lt; p3.top() &lt;&lt;<span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"队列的大小:"</span>&lt;&lt; p3.size() &lt;&lt;<span class="hljs-built_in">endl</span>;
+    
+}
+</code></pre>
+<h2>STL中的set和multiset集合容器</h2>
+<p>set是一个集合，<code>Objective-C</code>语言中也有集合的概念。C++中的集合与OC中的集合也有不同的地方。</p>
+<ul>
+<li>C++的set容器，其中包含的元素是唯一的，而且是有序的。</li>
+<li>C++的set容器，是按照顺序插入的，不能在指定位置插入。</li>
+<li>C++的set容器，其结构是红黑二叉树，插入数据的效率比vector快</li>
+</ul>
+<h4>set元素的插入和删除</h4>
+<p>set提供了<code>insert</code>和<code>erase</code>函数，用来对元素进行插入和删除操作。</p>
+<ul>
+<li>基础类型数据，如果插入的是重复的元素，则插入失败，返回值是一个pair类型</li>
+<li>pair类型类似于swift语言中的元组的概念，通过其判断是否插入成功</li>
+<li>复杂类型数据，需要通过仿函数来确定元素的顺序，进入判断是否是重复元素。在“自定义对象的排序”里面讲解。</li>
+</ul>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt; set1;
+    
+    <span class="hljs-comment">//插入元素</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i&lt;<span class="hljs-number">5</span>; i++) {
+        <span class="hljs-keyword">int</span> tmp = rand();
+        set1.insert(tmp);
+    }
+    
+    <span class="hljs-comment">//重复插入元素（会插入不成功，下一节会分析如果根据返回值判断是否插入成功）</span>
+    set1.insert(<span class="hljs-number">100</span>);
+    set1.insert(<span class="hljs-number">100</span>);
+    set1.insert(<span class="hljs-number">100</span>);
+    set1.insert(<span class="hljs-number">100</span>);
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = set1.begin(); it != set1.end(); it++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt;<span class="hljs-string">" "</span>;
+    }
+    
+    
+    <span class="hljs-comment">//删除集合</span>
+    <span class="hljs-keyword">while</span>(!set1.empty())
+    {
+        <span class="hljs-comment">//获取头部</span>
+        <span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = set1.begin();
+        
+        <span class="hljs-comment">//打印头部元素</span>
+        <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="hljs-built_in">endl</span>;
+        
+        <span class="hljs-comment">//从头部删除元素</span>
+        set1.erase(set1.begin());
+    }
+    
+}
+</code></pre>
+<h4>普通数据类型的排序</h4>
+<p>set容器是有序的集合，默认的顺序是从小到大的。</p>
+<p>创建集合的方式：</p>
+<ul>
+<li>
+<code>set&lt;int&gt;</code>创建默认的从小到大的int类型的集合</li>
+<li>
+<code>set&lt;int,less&lt;int&gt;&gt;</code>创建一个从小打到大的int类型的集合</li>
+<li>
+<code>set&lt;int,greater&lt;int&gt;&gt;</code>创建一个从大到小的int类型的集合</li>
+</ul>
+<p>上面的less和greater就是仿函数，集合会根据这个仿函数的返回值是否为真类进行排序。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-comment">//仿函数的原型，下面是C++提供的默认的greater的仿函数(删除了宏定义后的)</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">greater</span>
+{</span>
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;left, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;right)</span> <span class="hljs-keyword">const</span>
+    </span>{
+        <span class="hljs-comment">//如果左值&gt;右值，为真。从大到小的排列</span>
+        <span class="hljs-keyword">return</span> left &gt; right;
+    }
+};
+</code></pre>
+<p>我们可以测试下，添加进set集合的元素确实是有顺的。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">//默认，从小到大</span>
+    <span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt; set1;
+    <span class="hljs-comment">//从小到大--默认就是</span>
+    <span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>, less&lt;<span class="hljs-keyword">int</span>&gt;&gt; set2;
+    <span class="hljs-comment">//从大到小</span>
+    <span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>, greater&lt;<span class="hljs-keyword">int</span>&gt;&gt; set3;
+
+    <span class="hljs-comment">//添加元素</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {
+        <span class="hljs-keyword">int</span> tmp = rand();
+        set3.insert(tmp);
+    }
+    
+    <span class="hljs-comment">//遍历</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = set3.begin(); it != set3.end(); it++) {
+        <span class="hljs-built_in">cout</span>&lt;&lt; *it &lt;&lt; <span class="hljs-string">" "</span>;
+    }
+}
+</code></pre>
+<h4>自定义对象的排序</h4>
+<p>上面，我们看到了基础的数据类型的集合，是可以排序的。但是，如果集合里面放的是特殊的自定义对象，该如何满足set有序的特性呢？</p>
+<p>通过上面的例子，我们知道，基础数据类型的set是有序的关键原因是greater和less仿函数。所以，自定义对象的有序也是通过我们自定义仿函数来保证的。</p>
+<p>仿函数，之所以叫仿函数，是因为它跟函数很像，但并不是一个函数。它的结果如下，只要我们实现了这个仿函数，我们也可以对自定义对象进行排序。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-comment">//定义仿函数的结构体</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">FunctionName</span>
+{</span>
+    <span class="hljs-comment">//重载了()运算符，实现两个自定义对象的比较</span>
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">opeartor</span><span class="hljs-params">()</span> <span class="hljs-params">(Type &amp;left, Type &amp;right)</span>
+    </span>{
+        <span class="hljs-comment">//左值大于右值，从大到小的顺序</span>
+        <span class="hljs-keyword">if</span>(left &gt; right) 
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">else</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        
+    }
+};
+
+</code></pre>
+<p>下面，我们自定义一个Student对象，根据年龄进行排序，将对象加入到set集合中，并进行打印。</p>
+<blockquote>
+<p>如果仿函数实现了根据年龄进行排序，因为set是元素唯一的，所以在插入对象的时候，如果年龄是重复的，则插入不进去了。</p>
+</blockquote>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-comment">//定义student对象</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> {</span>
+<span class="hljs-keyword">public</span>:
+    Student(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">int</span> age)
+    {
+        <span class="hljs-built_in">strcpy</span>(<span class="hljs-keyword">this</span>-&gt;name, name);
+        <span class="hljs-keyword">this</span>-&gt;age = age;
+    }
+    
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">char</span> name[<span class="hljs-number">64</span>];
+    <span class="hljs-keyword">int</span>  age;
+};
+
+<span class="hljs-comment">//提供仿函数，用于自定义对象的set进行排序，要写一个仿函数，用来排序</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">FuncStudent</span>
+{</span>
+    <span class="hljs-comment">//重载了括号操作符，用来比较大小</span>
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span> <span class="hljs-params">(<span class="hljs-keyword">const</span> Student &amp;left, <span class="hljs-keyword">const</span> Student &amp;right)</span>
+    </span>{
+        <span class="hljs-comment">//如果左边比右边小，从小到大按照年龄排序</span>
+        <span class="hljs-keyword">if</span>(left.age &lt; right.age)
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">else</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+    
+};
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-function">Student <span class="hljs-title">s1</span><span class="hljs-params">(<span class="hljs-string">"s1"</span>,<span class="hljs-number">32</span>)</span></span>;
+    <span class="hljs-function">Student <span class="hljs-title">s2</span><span class="hljs-params">(<span class="hljs-string">"s2"</span>,<span class="hljs-number">22</span>)</span></span>;
+    <span class="hljs-function">Student <span class="hljs-title">s3</span><span class="hljs-params">(<span class="hljs-string">"s3"</span>,<span class="hljs-number">44</span>)</span></span>;
+    <span class="hljs-function">Student <span class="hljs-title">s4</span><span class="hljs-params">(<span class="hljs-string">"s4"</span>,<span class="hljs-number">11</span>)</span></span>;
+    <span class="hljs-function">Student <span class="hljs-title">s5</span><span class="hljs-params">(<span class="hljs-string">"s5"</span>,<span class="hljs-number">22</span>)</span></span>; 
+    
+    <span class="hljs-comment">//创建集合，采用从小到大的排序</span>
+    <span class="hljs-built_in">set</span>&lt;Student, FuncStudent&gt; set1;
+    
+    <span class="hljs-comment">//插入数据</span>
+    set1.insert(s1);
+    set1.insert(s2);
+    set1.insert(s3);
+    set1.insert(s4);
+    <span class="hljs-comment">//插入不进去(年龄有重复的，所以插不进去了),要通过返回值来确保是否插入成功</span>
+    set1.insert(s5);    
+    
+    <span class="hljs-comment">//遍历</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">set</span>&lt;Student&gt;::iterator it = set1.begin(); it != set1.end(); it++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; it-&gt;age &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; it-&gt;name &lt;&lt;<span class="hljs-built_in">endl</span>;
+    }
+    
+}
+</code></pre>
+<h4>pair类型的返回值</h4>
+<p>pair类型，就类似于Swift语言中的“元组”的概念，这个类型包含了多个数据类型，在函数返回的时候，可以同时返回多个值。</p>
+<p>我们来看一下pair类型的定义它实际上是一个结构体。它包含了两个属性，<code>first</code>和<code>second</code>。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> _<span class="hljs-title">T1</span>, <span class="hljs-title">class</span> _<span class="hljs-title">T2</span>&gt;
+<span class="hljs-title">struct</span> <span class="hljs-title">pair</span>
+{</span>
+    <span class="hljs-keyword">typedef</span> _T1 first_type;
+    <span class="hljs-keyword">typedef</span> _T2 second_type;
+
+    _T1 first;
+    _T2 second;
+}
+</code></pre>
+<p>上面的例子中，我们知道set集合中的元素是唯一的，重复的元素插入会失败。如果判断是否插入成功，我们可以通过<code>insert</code>函数的返回值来判断，它的返回值是一个<code>pair</code>类型。我们来看一下<code>insert</code>函数的原型:</p>
+<pre class="hljs cpp"><code class="cpp">pair&lt;iterator,<span class="hljs-keyword">bool</span>&gt; insert(<span class="hljs-keyword">const</span> value_type&amp; __v)
+</code></pre>
+<p>返回的是<code>pair&lt;iterator, bool&gt;</code>类型，pair的第一个属性表示当前插入的迭代器的位置，第二个属性表示插入是否成功的bool值。所以，我们可以通过第二个属性来判断元素是否插入成功。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-comment">//pair的使用判断set的insert函数的返回值</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test3</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-function">Student <span class="hljs-title">s1</span><span class="hljs-params">(<span class="hljs-string">"s1"</span>,<span class="hljs-number">32</span>)</span></span>;
+    <span class="hljs-function">Student <span class="hljs-title">s2</span><span class="hljs-params">(<span class="hljs-string">"s2"</span>,<span class="hljs-number">22</span>)</span></span>;
+    <span class="hljs-function">Student <span class="hljs-title">s3</span><span class="hljs-params">(<span class="hljs-string">"s3"</span>,<span class="hljs-number">44</span>)</span></span>;
+    <span class="hljs-function">Student <span class="hljs-title">s4</span><span class="hljs-params">(<span class="hljs-string">"s4"</span>,<span class="hljs-number">11</span>)</span></span>;
+    <span class="hljs-function">Student <span class="hljs-title">s5</span><span class="hljs-params">(<span class="hljs-string">"s5"</span>,<span class="hljs-number">22</span>)</span></span>;
+    
+    <span class="hljs-comment">//创建集合，采用从小到大的排序</span>
+    <span class="hljs-built_in">set</span>&lt;Student, FuncStudent&gt; set1;
+
+    <span class="hljs-comment">//插入数据，接收返回值</span>
+    pair&lt;<span class="hljs-built_in">set</span>&lt;Student, FuncStudent&gt;::iterator, <span class="hljs-keyword">bool</span>&gt; pair1 = set1.insert(s1);
+    <span class="hljs-keyword">if</span> (pair1.second == <span class="hljs-literal">true</span>) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"插入s1成功"</span> &lt;&lt;<span class="hljs-built_in">endl</span>;
+    }<span class="hljs-keyword">else</span>{
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"插入s1失败"</span> &lt;&lt;<span class="hljs-built_in">endl</span>;
+    }
+}
+</code></pre>
+<h4>set容器数据的查找</h4>
+<p>set容器提供了多个函数用来查找元素</p>
+<ul>
+<li>
+<code>iterator find(const key_type&amp; __k)</code> find函数查找元素为k的迭代器位置</li>
+<li>
+<code>iterator lower_bound(const key_type&amp; __k)</code> lower_bound函数查找小于等于元素k的迭代器位置</li>
+<li>
+<code>iterator upper_bound(const key_type&amp; __k)</code> upper_bound函数查找大于元素k的迭代器位置</li>
+<li>
+<code>pair&lt;iterator,iterator&gt; equal_range(const key_type&amp; __k)</code> equal_range函数返回一个pair类型，第一个属性表示大于等于k的迭代器位置，第二个是大于k的迭代器位置</li>
+</ul>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test4</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt; set1;
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+        set1.insert(i+<span class="hljs-number">1</span>);
+    }
+    
+    <span class="hljs-comment">//遍历</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = set1.begin(); it != set1.end(); it++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt;<span class="hljs-built_in">endl</span>;
+    }
+    
+    <span class="hljs-comment">//查找元素是5的迭代器位置</span>
+    <span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it0 = set1.find(<span class="hljs-number">5</span>);
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"it0:"</span> &lt;&lt; *it0 &lt;&lt;<span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//查找小于等于5的元素迭代器位置</span>
+    <span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it1 = set1.lower_bound(<span class="hljs-number">5</span>);
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"it1:"</span> &lt;&lt; *it1 &lt;&lt;<span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//查找大于5的元素迭代器位置</span>
+    <span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it2 = set1.upper_bound(<span class="hljs-number">5</span>);
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"it2:"</span> &lt;&lt; *it2 &lt;&lt;<span class="hljs-built_in">endl</span>;
+    
+    <span class="hljs-comment">//返回的pair第一个迭代器是&gt;=5,另一个是&gt;5</span>
+    pair&lt;<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator, <span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator&gt; mypair = set1.equal_range(<span class="hljs-number">5</span>);
+    <span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it3 = mypair.first;
+    <span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it4 = mypair.second;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"it3:"</span> &lt;&lt; *it3 &lt;&lt;<span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"it4:"</span> &lt;&lt; *it4 &lt;&lt;<span class="hljs-built_in">endl</span>; 
+}
+</code></pre>
+<h4>multiset容器</h4>
+<p>multiset容器，与set容器相似，但是multiset容器中的元素可以重复。另外，他也是自动排序的，容器内部的值不能随便修改，因为有顺序的。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test5</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">//定义multiset</span>
+    <span class="hljs-built_in">multiset</span>&lt;<span class="hljs-keyword">int</span>&gt; set1;
+    
+    <span class="hljs-comment">//从键盘不停的接收值</span>
+    <span class="hljs-keyword">int</span> tmp = <span class="hljs-number">0</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"请输入multiset集合的值:"</span>);
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;tmp);
+    <span class="hljs-keyword">while</span> (tmp != <span class="hljs-number">0</span>) {
+        set1.insert(tmp);
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;tmp);
+    }
+    
+    <span class="hljs-comment">//迭代器遍历</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">multiset</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = set1.begin(); it != set1.end(); it++) {
+        <span class="hljs-built_in">cout</span>&lt;&lt; *it &lt;&lt;<span class="hljs-string">" "</span>;
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt;<span class="hljs-built_in">endl</span>;
+   
+    <span class="hljs-comment">//删除</span>
+    <span class="hljs-keyword">while</span> (!set1.empty()) {
+        <span class="hljs-built_in">multiset</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = set1.begin();
+        <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="hljs-string">" "</span>;
+        set1.erase(it);
+    }
+}
+</code></pre>
+<h2>STL中的map和multimap映射容器</h2>
+<p>map和multimap是一个键值映射的容器。map中的键值对都是唯一的，但是multimap中一个键可以对应多个值。</p>
+<ul>
+<li>map和multimap是关联式容器，键值成对存在</li>
+<li>map和multimap是红黑变体的平衡二叉树结构</li>
+<li>map只支持唯一的键值对，集合中的元素是按照一定的顺序排列的</li>
+<li>multimap中的键可以出现多次</li>
+<li>map和multimap的元素插入过程是按照顺序插入的</li>
+</ul>
+<h4>map元素的增删改查</h4>
+<p>map元素的插入，有两种方式：</p>
+<ol>
+<li>调用insert函数插入pair类型的键值对</li>
+<li>直接使用[]来对键进行复制，类似于Objective-C中的NSMutableDictionary赋值一样。</li>
+</ol>
+<p>map的insert函数返回的是pair类型，pair的第二个参数表示是否插入成功。如果插入的元素键名相同，则插入失败。</p>
+<p>map元素的删除，跟上面其他的容器一样，都是直接调用erase函数.</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt; map1;
+    
+    <span class="hljs-comment">//insert方法插入</span>
+    <span class="hljs-comment">//--1 通过pair&lt;int, string&gt;(1,”chenhua“) 构造pair元素</span>
+    map1.insert(pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;(<span class="hljs-number">1</span>,<span class="hljs-string">"chenhua"</span>));
+    <span class="hljs-comment">//--2 通过make_pair构造pair元素</span>
+    map1.insert(make_pair(<span class="hljs-number">2</span>,<span class="hljs-string">"mengna"</span>));
+    <span class="hljs-comment">//--3 通过value_type构造pair元素</span>
+    map1.insert(<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;::value_type(<span class="hljs-number">3</span>,<span class="hljs-string">"chenmeng"</span>));
+    
+    <span class="hljs-comment">//[]直接插入</span>
+    map1[<span class="hljs-number">4</span>] = <span class="hljs-string">"menghua"</span>;
+    
+    <span class="hljs-comment">//重复插入(插入会不成功)</span>
+    pair&lt;<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;::iterator, <span class="hljs-keyword">bool</span>&gt; pair1 = map1.insert(make_pair(<span class="hljs-number">2</span>, <span class="hljs-string">"haha"</span>));
+    <span class="hljs-keyword">if</span> (pair1.second) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"重复插入成功"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }<span class="hljs-keyword">else</span>{
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"重复插入失败"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }
+    
+    <span class="hljs-comment">//元素的修改</span>
+    <span class="hljs-comment">//map[1] = "22"的方式，如果不存在键则插入，存在键则修改</span>
+    map1[<span class="hljs-number">2</span>] = <span class="hljs-string">"haha"</span>;
+    
+    <span class="hljs-comment">//元素的删除</span>
+    <span class="hljs-comment">//--删除值为"haha"的元素</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;::iterator it = map1.begin(); it != map1.end(); it++) {
+        <span class="hljs-keyword">if</span> (it-&gt;second.compare(<span class="hljs-string">"haha"</span>) == <span class="hljs-number">0</span>) {
+            map1.erase(it);
+        }
+    }
+    
+    <span class="hljs-comment">//遍历</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;::iterator it = map1.begin(); it != map1.end(); it++) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; it-&gt;first &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; it-&gt;second &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h4>map元素的查找</h4>
+<p>map提供了两个函数进行key的查找：find和equal_range。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">//定义map</span>
+    <span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span> ,<span class="hljs-built_in">string</span>&gt; map1;
+    map1[<span class="hljs-number">1</span>] = <span class="hljs-string">"chenhua"</span>;
+    map1[<span class="hljs-number">2</span>] = <span class="hljs-string">"mengna"</span>;
+    
+    <span class="hljs-comment">//查找key=100的键值对</span>
+    <span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;::iterator it = map1.find(<span class="hljs-number">100</span>);
+    <span class="hljs-keyword">if</span> (it != map1.end()) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"存在key=100的键值对"</span>;
+    }<span class="hljs-keyword">else</span>{
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"不存在"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }
+    
+    
+    <span class="hljs-comment">//查找key = 1000的位置</span>
+    <span class="hljs-comment">//返回两个迭代器，第一个表示&lt;=1000的迭代器位置，第二个是&gt;1000的迭代器位置</span>
+    pair&lt;<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;::iterator, <span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">string</span>&gt;::iterator&gt; mypair = map1.equal_range(<span class="hljs-number">1000</span>);
+    <span class="hljs-keyword">if</span> (mypair.first == map1.end()) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"大于等于5的位置不存在"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }<span class="hljs-keyword">else</span>{
+        <span class="hljs-built_in">cout</span> &lt;&lt; mypair.first-&gt;first &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; mypair.first-&gt;second &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }
+    
+    <span class="hljs-keyword">if</span> (mypair.second == map1.end()) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"大于5的位置不存在"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }<span class="hljs-keyword">else</span>{
+        <span class="hljs-built_in">cout</span> &lt;&lt; mypair.second-&gt;first &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; mypair.second-&gt;second &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h4>multimap容器</h4>
+<p>multimap容器，与map容器的唯一区别是：multimap支持多个键值。</p>
+<p>由于支持多个键值，multimap提供了cout函数来计算同一个key的元素个数。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> {</span>
+    
+    
+<span class="hljs-keyword">public</span>:
+    
+    <span class="hljs-built_in">string</span> name;    <span class="hljs-comment">//姓名</span>
+    <span class="hljs-keyword">int</span> age;        <span class="hljs-comment">//年龄</span>
+    <span class="hljs-built_in">string</span> tel;     <span class="hljs-comment">//电话</span>
+    <span class="hljs-keyword">double</span> sal;     <span class="hljs-comment">//工资</span>
+    
+};
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">()</span>
+</span>{
+    Person p1,p2,p3,p4,p5;
+    p1.name = <span class="hljs-string">"王1"</span>;
+    p1.age  = <span class="hljs-number">31</span>;
+    
+    p2.name = <span class="hljs-string">"王2"</span>;
+    p2.age  = <span class="hljs-number">31</span>;
+    
+    p3.name = <span class="hljs-string">"张3"</span>;
+    p3.age  = <span class="hljs-number">31</span>;
+    
+    p4.name = <span class="hljs-string">"张4"</span>;
+    p4.age  = <span class="hljs-number">31</span>;
+    
+    p5.name = <span class="hljs-string">"钱5"</span>;
+    p5.age  = <span class="hljs-number">31</span>;
+    
+    
+    <span class="hljs-built_in">multimap</span>&lt;<span class="hljs-built_in">string</span>, Person&gt; map2;
+    
+    <span class="hljs-comment">//sale部门</span>
+    map2.insert(make_pair(<span class="hljs-string">"sale"</span>, p1));
+    map2.insert(make_pair(<span class="hljs-string">"sale"</span>, p2));
+    
+    <span class="hljs-comment">//development部门</span>
+    map2.insert(make_pair(<span class="hljs-string">"development"</span>, p3));
+    map2.insert(make_pair(<span class="hljs-string">"development"</span>, p4));
+    
+    <span class="hljs-comment">//Finanncial部门</span>
+    map2.insert(make_pair(<span class="hljs-string">"Finanncial"</span>, p5));
+    
+    
+    <span class="hljs-comment">//遍历</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">multimap</span>&lt;<span class="hljs-built_in">string</span>, Person&gt;::iterator it = map2.begin(); it != map2.end(); it++) {
+        
+        
+        <span class="hljs-built_in">cout</span> &lt;&lt; it-&gt;first &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; it-&gt;second.name &lt;&lt; <span class="hljs-built_in">endl</span>;
+        
+    }
+    
+    <span class="hljs-comment">//按部门显示员工信息</span>
+    <span class="hljs-keyword">int</span> developNum = (<span class="hljs-keyword">int</span>) map2.count(<span class="hljs-string">"development"</span>);
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"development部门人数："</span> &lt;&lt; developNum &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">multimap</span>&lt;<span class="hljs-built_in">string</span>,Person&gt;::iterator it2 = map2.find(<span class="hljs-string">"development"</span>);
+    <span class="hljs-keyword">int</span> tag = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (it2 != map2.end() &amp;&amp; tag &lt; developNum) {
+        <span class="hljs-built_in">cout</span> &lt;&lt; it2-&gt;first &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; it2-&gt;second.name &lt;&lt;<span class="hljs-built_in">endl</span>;
+        it2 ++;
+        tag ++;
+    }
+    
+    <span class="hljs-comment">//把age=32 修改name= 32</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">multimap</span>&lt;<span class="hljs-built_in">string</span>, Person&gt;::iterator it = map2.begin(); it != map2.end(); it++) {
+        <span class="hljs-keyword">if</span> (it-&gt;second.age == <span class="hljs-number">32</span>) {
+            it-&gt;second.name = <span class="hljs-string">"32"</span>;
+        }
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+ 
+    test();
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h2>STL容器的通用性探究</h2>
+<p>到这里，STL的容器我们基本讲解完毕了。STL的容器主要利用了C++的模板特性来实现。需要注意：</p>
+<ul>
+<li>容器缓存了节点，节点类要确保支持拷贝(否则出现浅拷贝问题，导致崩溃)</li>
+<li>容器中的一般节点类，需要提供拷贝构造函数，并重载等号操作符(用来赋值)</li>
+<li>容器在插入元素时，会自动进行元素的拷贝。</li>
+</ul>
+<p>针对容器，容器之间也支持拷贝。所以需要注意：</p>
+<ul>
+<li>除了queue和stack外，每个容器都提供了可返回迭代器的函数，运用返回的跌打器就可以访问元素</li>
+<li>通常STL不会抛出异常，要求使用者确保传入正确的参数</li>
+<li>每个容器都提供了一个默认构造函数和一个默认拷贝构造函数</li>
+</ul>
+<h4>STL容器的元素拷贝</h4>
+<p>下面，我们演示一下，如果容器元素如果没有实现拷贝构造函数，出现浅拷贝后的崩溃问题。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> {</span>
+    
+<span class="hljs-keyword">public</span>:
+    Student(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">int</span> age)
+    {
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"构造函数"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+        
+        <span class="hljs-comment">//分配内存空间</span>
+        m_name = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-built_in">strlen</span>(name) + <span class="hljs-number">1</span>];
+        <span class="hljs-comment">//值拷贝</span>
+        <span class="hljs-built_in">strcpy</span>(m_name, name);
+        
+        m_age = age;
+    }
+    
+    
+    ~Student()
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%p 指向的空间 调用析构函数\n"</span>, m_name);
+        <span class="hljs-keyword">if</span> (m_name != <span class="hljs-literal">NULL</span>) {
+            <span class="hljs-keyword">delete</span> []m_name;
+            m_age = <span class="hljs-number">0</span>;
+        }
+    }
+    
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-keyword">char</span> *m_name;
+    <span class="hljs-keyword">int</span>   m_age;
+    
+};
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-function">Student <span class="hljs-title">s1</span><span class="hljs-params">(<span class="hljs-string">"chenhua"</span>,<span class="hljs-number">24</span>)</span></span>;
+    
+    <span class="hljs-built_in">vector</span>&lt;Student&gt; v1;
+    v1.push_back(s1);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>上面的代码段，运行后的结果如下：</p>
+<pre class="hljs undefined"><code>构造函数
+0x100302a00 指向的空间 调用析构函数
+0x100302a00 指向的空间 调用析构函数
+</code></pre>
+<p>运行后，打印出结果后并报错。报错原因是同一个内存空间被释放了2次，导致的崩溃。其根本原因是,v1将s1拷贝到容器，由于Student没有重写拷贝构造函数，从而出现了浅拷贝，只拷贝了地址。释放的时候毫无疑问出现错误。</p>
+<p>如果我们给Student重写了拷贝构造函数和重载了等号操作符，则上面的错误就不会出现。</p>
+<pre class="hljs cpp"><code class="cpp"><span class="hljs-comment">//重写拷贝构造函数</span>
+Student(<span class="hljs-keyword">const</span> Student &amp;obj)
+{
+    <span class="hljs-comment">//分配内存空间</span>
+    m_name = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-built_in">strlen</span>(obj.m_name) + <span class="hljs-number">1</span>];
+    <span class="hljs-comment">//值拷贝</span>
+    <span class="hljs-built_in">strcpy</span>(m_name, obj.m_name);
+    
+    m_age = obj.m_age;
+}
+    
+<span class="hljs-comment">//重载等号运算符</span>
+Student &amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> Student &amp;obj)
+{
+    <span class="hljs-comment">//释放旧值</span>
+    <span class="hljs-keyword">if</span> (m_name != <span class="hljs-literal">NULL</span>) {
+        <span class="hljs-keyword">delete</span> [] m_name;
+        m_age = <span class="hljs-number">0</span>;
+    }
+    
+    <span class="hljs-comment">//分配内存空间并赋值</span>
+    m_name = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-built_in">strlen</span>(obj.m_name) + <span class="hljs-number">1</span>];
+    <span class="hljs-built_in">strcpy</span>(m_name, obj.m_name);
+    m_age = obj.m_age;
+    
+    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+}
+</code></pre>
+<h4>STL容器的比较</h4>
+<p>STL提供了很多容器，每种容器有其自身的特点，我们该如何使用它们呢？</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:center">vector</th>
+<th style="text-align:right">deque</th>
+<th style="text-align:right">list</th>
+<th style="text-align:right">set</th>
+<th style="text-align:right">mutliset</th>
+<th style="text-align:right">map</th>
+<th style="text-align:right">multimap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">内存结构</td>
+<td style="text-align:center">单端数组</td>
+<td style="text-align:right">双端数组</td>
+<td style="text-align:right">双向链表</td>
+<td style="text-align:right">二叉树</td>
+<td style="text-align:right">二叉树</td>
+<td style="text-align:right">二叉树</td>
+<td style="text-align:right">二叉树</td>
+</tr>
+<tr>
+<td style="text-align:left">随机存取</td>
+<td style="text-align:center">是</td>
+<td style="text-align:right">是</td>
+<td style="text-align:right">否</td>
+<td style="text-align:right">否</td>
+<td style="text-align:right">否</td>
+<td style="text-align:right">对key而言是</td>
+<td style="text-align:right">否</td>
+</tr>
+<tr>
+<td style="text-align:left">查找速度</td>
+<td style="text-align:center">慢</td>
+<td style="text-align:right">慢</td>
+<td style="text-align:right">非常慢</td>
+<td style="text-align:right">快</td>
+<td style="text-align:right">快</td>
+<td style="text-align:right">对key而言快</td>
+<td style="text-align:right">对key而言快</td>
+</tr>
+<tr>
+<td style="text-align:left">插入删除</td>
+<td style="text-align:center">尾端</td>
+<td style="text-align:right">头尾两端</td>
+<td style="text-align:right">任何位置</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">$1</td>
+</tr>
+</tbody>
+</table>
+
+          </div>
+        </div>
+    </div>
+
+    <!-- 如果是付费文章，未购买，则显示购买按钮 -->
+
+    <!-- 连载目录项 -->
+
+    <!-- 如果是付费文章 -->
+      <!-- 如果是付费连载，已购买，且作者允许赞赏，则显示付费信息和赞赏 -->
+        <div id="free-reward-panel" class="support-author"><p>赞我一包辣条吧</p> <div class="btn btn-pay">赞赏支持</div> <div class="supporter"><ul class="support-list"></ul> <!----></div> <!----> <!----></div>
+
+      <div class="show-foot">
+        <a class="notebook" href="https://www.jianshu.com/nb/17025313">
+          <i class="iconfont ic-search-notebook"></i>
+          <span>C/C++</span>
+</a>        <div class="copyright" data-toggle="tooltip" data-html="true" data-original-title="转载请联系作者获得授权，并标注“简书作者”。">
+          © 著作权归作者所有
+        </div>
+        <div class="modal-wrap" data-report-note="">
+          <a id="report-modal">举报文章</a>
+        </div>
+      </div>
+
+      <!-- 文章底部作者信息 -->
+        <div class="follow-detail">
+          <div class="info">
+            <a class="avatar" href="https://www.jianshu.com/u/ebb60643b57c">
+              <img src="./C++进阶-STL容器，你看我就够了 - 简书_files/b7b289fa527e" alt="96">
+</a>            <a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>
+            <a class="title" href="https://www.jianshu.com/u/ebb60643b57c">一月二十三</a>
+              <i class="iconfont ic-man"></i>
+          <p>写了 20373 字，被 165 人关注，获得了 276 个喜欢</p></div>
+        </div>
+
+    <div class="meta-bottom">
+      <div data-v-6ddd02c6="" class="like"><div data-v-6ddd02c6="" class="btn like-group"><div data-v-6ddd02c6="" class="btn-like"><a data-v-6ddd02c6="">喜欢</a></div> <div data-v-6ddd02c6="" class="modal-wrap"><a data-v-6ddd02c6="">93</a></div></div> <!----></div>
+      <div class="share-group">
+        <a class="share-circle" data-action="weixin-share" data-toggle="tooltip" data-original-title="分享到微信">
+          <i class="iconfont ic-wechat"></i>
+        </a>
+        <a class="share-circle" data-action="weibo-share" data-toggle="tooltip" href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;&#39;, &#39;推荐 一月二十三 的文章《C++进阶-STL容器，你看我就够了》（ 分享自 @简书 ）&#39;,&#39;https://www.jianshu.com/p/497843e403b4?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weibo&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));" data-original-title="分享到微博">
+          <i class="iconfont ic-weibo"></i>
+        </a>
+        <a class="share-circle" data-toggle="tooltip" id="longshare" target="_blank" data-original-title="" title="">
+            <div class="qrcode" id="qrcode" style="display: none;">
+             <img src="./C++进阶-STL容器，你看我就够了 - 简书_files/download-index-side-qrcode-cb13fc9106a478795f8d10f9f632fccf.png" alt="Download index side qrcode">
+             <p>下载app生成长微博图片</p>
+             </div>
+          <i class="iconfont ic-picture"></i>
+        </a>
+        <a class="share-circle more-share" tabindex="0" data-toggle="popover" data-placement="top" data-html="true" data-trigger="focus" href="javascript:void(0);" data-content="
+          &lt;ul class=&quot;share-list&quot;&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;https://www.jianshu.com/p/497843e403b4?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=qzone&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 一月二十三 的文章《C++进阶-STL容器，你看我就够了》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-zone&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到QQ空间&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;https://www.jianshu.com/p/497843e403b4?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=twitter&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 一月二十三 的文章《C++进阶-STL容器，你看我就够了》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-twitter&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Twitter&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=https://www.jianshu.com/p/497843e403b4?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=facebook&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-facebook&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Facebook&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;https://www.jianshu.com/p/497843e403b4?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=google_plus&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-google&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Google+&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;https://www.jianshu.com/p/497843e403b4?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=douban&#39;)+&#39;&amp;title=&#39;+e(&#39;C++进阶-STL容器，你看我就够了&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-douban&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到豆瓣&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        " data-original-title="" title="">更多分享</a>
+      </div>
+    </div>
+
+    <div id="note-ad" class=""><a id="web-note-ad-1" target="_blank" href="https://www.jianshu.com/apps/redirect?utm_source=note-bottom-click"><img src="./C++进阶-STL容器，你看我就够了 - 简书_files/web-note-ad-1-c2e1746859dbf03abe49248893c9bea4.png" alt="Web note ad 1"></a></div>
+
+    <!--
+    <div id="note-comment-above-ad-container">
+      <span id="youdao-comment-ad" class="ad-badge">广告</span>
+    </div>
+    -->
+    <div><div id="comment-list" class="comment-list"><div><form class="new-comment"><a class="avatar"><img src="./C++进阶-STL容器，你看我就够了 - 简书_files/avatar_default-78d4d1f68984cd6d4379508dd94b4210.png"></a> <div class="sign-container"><a href="https://www.jianshu.com/sign_in?utm_source=desktop&amp;utm_medium=not-signed-in-comment-form" class="btn btn-sign">登录</a> <span>后发表评论</span></div></form> <!----></div> <!----> <div class="comments-placeholder" style="display: none;"><div class="author"><div class="avatar"></div> <div class="info"><div class="name"></div> <div class="meta"></div></div></div> <div class="text"></div> <div class="text animation-delay"></div> <div class="tool-group"><i class="iconfont ic-zan-active"></i><div class="zan"></div> <i class="iconfont ic-list-comments"></i><div class="zan"></div></div></div> <div id="normal-comment-list" class="normal-comment-list"><div><div><div class="top-title"><span>3条评论</span> <a class="author-only">只看作者</a> <a class="close-btn" style="display: none;">关闭评论</a> <div class="pull-right"><a class="active">按时间倒序</a><a class="">按时间正序</a></div></div></div> <!----> <!----> <div class="comments-placeholder" style="display: none;"><div class="author"><div class="avatar"></div> <div class="info"><div class="name"></div> <div class="meta"></div></div></div> <div class="text"></div> <div class="text animation-delay"></div> <div class="tool-group"><i class="iconfont ic-zan-active"></i><div class="zan"></div> <i class="iconfont ic-list-comments"></i><div class="zan"></div></div></div> <div id="comment-22546600" class="comment"><div><div class="author"><div data-v-f3bf5228="" class="v-tooltip-container" style="z-index: 0;"><div class="v-tooltip-content"><a href="https://www.jianshu.com/u/b45bfb302721" target="_blank" class="avatar"><img src="./C++进阶-STL容器，你看我就够了 - 简书_files/a98392ee-c811-4962-a8f4-24f91a89c2b5.jpg"></a>  </div> <!----></div> <div class="info"><a href="https://www.jianshu.com/u/b45bfb302721" target="_blank" class="name">旭海云涛</a> <!----> <!----> <div class="meta"><span>3楼 · 2018.04.07 19:16</span></div></div></div> <div class="comment-wrap"><p>如果把循环中erase后迭代器失效的内容加上就完美了</p> <!----> <div class="tool-group"><a data-v-cdecbe24="" id="like-button-22546600" class="like-button"><span data-v-cdecbe24="">赞</span></a> <a class=""><i class="iconfont ic-comment"></i> <span>回复</span></a> <!----> <!----></div></div></div> <div class="sub-comment-list hide"><!----> <!----></div></div><div id="comment-16514472" class="comment"><div><div class="author"><div data-v-f3bf5228="" class="v-tooltip-container" style="z-index: 0;"><div class="v-tooltip-content"><a href="https://www.jianshu.com/u/a3ea268aeb60" target="_blank" class="avatar"><img src="./C++进阶-STL容器，你看我就够了 - 简书_files/83e72c08-bb12-4a59-9f4c-5b1c5094a559.jpg"></a>  </div> <!----></div> <div class="info"><a href="https://www.jianshu.com/u/a3ea268aeb60" target="_blank" class="name">东风冷雪</a> <!----> <!----> <div class="meta"><span>2楼 · 2017.10.23 21:00</span></div></div></div> <div class="comment-wrap"><p>的确三天了结束忘了，和java中collection差不多。</p> <!----> <div class="tool-group"><a data-v-cdecbe24="" id="like-button-16514472" class="like-button"><span data-v-cdecbe24="">1人赞</span></a> <a class=""><i class="iconfont ic-comment"></i> <span>回复</span></a> <!----> <!----></div></div></div> <div class="sub-comment-list"><div id="comment-16521906" class="sub-comment"><p><div data-v-f3bf5228="" class="v-tooltip-container" style="z-index: 0;"><div class="v-tooltip-content"><a href="https://www.jianshu.com/u/ebb60643b57c" target="_blank">一月二十三</a>：
+            </div> <!----></div> <span><a href="https://www.jianshu.com/users/a3ea268aeb60" class="maleskine-author" target="_blank" data-user-slug="a3ea268aeb60">@东风冷雪</a> 对呀 差不太多  如果不用就忘记了</span> <!----></p> <div class="sub-tool-group"><span>2017.10.23 23:53</span> <a class=""><i class="iconfont ic-comment"></i> <span>回复</span></a> <!----> <!----></div></div> <div class="sub-comment more-comment"><a class="add-comment-btn"><i class="iconfont ic-subcomment"></i> <span>添加新评论</span></a> <!----> <!----> <!----></div> <!----></div></div></div></div> <!----> <div><!----></div></div></div>
+  </div>
+
+  <div class="side-tool"><ul><li data-placement="left" data-toggle="tooltip" data-container="body" data-original-title="回到顶部" style=""><a class="function-button"><i class="iconfont ic-backtop"></i></a></li> <!----> <!----> <!----> <!----> <li data-placement="left" data-toggle="tooltip" data-container="body" data-original-title="分享文章" id="share"><a tabindex="0" role="button" data-toggle="popover" data-placement="left" data-html="true" data-trigger="focus" href="javascript:void(0);" data-content="&lt;ul class=&#39;share-list&#39; style=&quot;width:220px&quot;&gt;
+                  &lt;li&gt;&lt;a class=&quot;weixin-share&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-weixin&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到微信&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;&#39;, &#39;推荐 一月二十三 的文章《C++进阶-STL容器，你看我就够了》（ 分享自 @简书 ）&#39;,&#39;https://www.jianshu.com/p/497843e403b4?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weibo&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-weibo&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到微博&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  
+                  &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;https://www.jianshu.com/p/497843e403b4?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=qzone&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 一月二十三 的文章《C++进阶-STL容器，你看我就够了》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-zone&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到QQ空间&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;https://www.jianshu.com/p/497843e403b4?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=twitter&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 一月二十三 的文章《C++进阶-STL容器，你看我就够了》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-twitter&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Twitter&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=https://www.jianshu.com/p/497843e403b4?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=facebook&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-facebook&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Facebook&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;https://www.jianshu.com/p/497843e403b4?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=google_plus&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-google&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Google+&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;https://www.jianshu.com/p/497843e403b4?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=douban&#39;)+&#39;&amp;title=&#39;+e(&#39;C++进阶-STL容器，你看我就够了&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-douban&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到豆瓣&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;" data-original-title="" title="" class="function-button"><i class="iconfont ic-share"></i></a> <!----></li> <!----></ul></div>
+</div>
+<div class="note-bottom">
+  <div><div class="main"><div class="title">被以下专题收入，发现更多相似内容</div> <!----> <div class="include-collection"><!----> <a href="https://www.jianshu.com/c/975eef62b892?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./C++进阶-STL容器，你看我就够了 - 简书_files/11.jpg"><div class="name">进阶的iOSer</div></a><a href="https://www.jianshu.com/c/NEt52a?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./C++进阶-STL容器，你看我就够了 - 简书_files/computer_guy.jpg"><div class="name">程序员</div></a><a href="https://www.jianshu.com/c/89995286335f?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./C++进阶-STL容器，你看我就够了 - 简书_files/QQ20170720-141447_2x.png"><div class="name">程序员首页投稿</div></a><a href="https://www.jianshu.com/c/bDHhpK?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./C++进阶-STL容器，你看我就够了 - 简书_files/首页投稿.png"><div class="name">首页投稿（暂停...</div></a><a href="https://www.jianshu.com/c/d6f81332f50e?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./C++进阶-STL容器，你看我就够了 - 简书_files/cpp-logo.png"><div class="name">C++</div></a><a href="https://www.jianshu.com/c/ba89950eec13?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./C++进阶-STL容器，你看我就够了 - 简书_files/1501127244.jpg"><div class="name">海南大学</div></a><a href="https://www.jianshu.com/c/3e692775d5fb?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./C++进阶-STL容器，你看我就够了 - 简书_files/1534823857.jpg"><div class="name">C++STL</div></a> <a class="show-more">
+        展开更多
+        <i class="iconfont ic-show"></i></a></div></div> <!----> <!----></div>
+  <div data-vcomp="recommended-notes" data-note-id="17744708"></div>
+
+  <!-- 相关文章 -->
+      <!-- 未登录用户 -->
+      <div class="seo-recommended-notes">
+
+            <div class="note ">
+                            <a class="title" target="_blank" href="https://www.jianshu.com/p/3ea9ea97ff39?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation">STL（1至6条）</a>
+              <p class="description">标签（空格分隔）： STL 运用STL，可以充分利用该库的设计，让我为简单而直接的问题设计出简单而直接的解决方案，也能帮助你为更复杂的问题设计出优雅的解决方案。我将指出一些常见的STL错误用法，并指出该如何避免这样的错误。这能帮助你避免产生资源泄漏、写出不能移植的代码，以及...</p>
+              <a class="author" target="_blank" href="https://www.jianshu.com/u/7c52ad64fc9d?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=seo_notes&amp;utm_source=recommendation">
+                <div class="avatar">
+                  <img src="./C++进阶-STL容器，你看我就够了 - 简书_files/d5a5ce93e94f" alt="48">
+                </div>
+                <span class="name">Miao先生</span>
+</a>            </div>
+
+            <div class="note ">
+                            <a class="title" target="_blank" href="https://www.jianshu.com/p/20e0f56bec48?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation">C++ list，vector，map，set区别与用法比较</a>
+              <p class="description">前言： 详细介绍： List：元素有放入顺序，元素可重复Map：元素按键值对存储，无放入顺序Set：元素无放入顺序，元素不可重复(注：set 元素虽然无放入顺序，但是元素在set中的位置有该元素的HashCode决定，其位置是固定的) 就个人而言.list 用的比较多. 其...</p>
+              <a class="author" target="_blank" href="https://www.jianshu.com/u/408285ed6c29?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=seo_notes&amp;utm_source=recommendation">
+                <div class="avatar">
+                  <img src="./C++进阶-STL容器，你看我就够了 - 简书_files/b3af0093-e4c1-4e27-b498-0a6eb558c654.jpg" alt="48">
+                </div>
+                <span class="name">YBshone</span>
+</a>            </div>
+
+            <div class="note ">
+                            <a class="title" target="_blank" href="https://www.jianshu.com/p/7b9381f08452?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation">《C++ Primer》读书笔记</a>
+              <p class="description">前言 把《C++ Primer》读薄系列笔记全集。 目录 第I部分：C++基础 开始学习C++ 变量和基本类型 字符串、向量和数组 表达式 语句 函数 类 第II部分：C++标准库 IO库 顺序容器 范型算法 关联容器 动态内存 第III部分：类设计者的工具 拷贝控制 重载...</p>
+              <a class="author" target="_blank" href="https://www.jianshu.com/u/f11b59cb7098?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=seo_notes&amp;utm_source=recommendation">
+                <div class="avatar">
+                  <img src="./C++进阶-STL容器，你看我就够了 - 简书_files/b515e9f164c9" alt="48">
+                </div>
+                <span class="name">尤汐_Jennica</span>
+</a>            </div>
+
+            <div class="note ">
+                            <a class="title" target="_blank" href="https://www.jianshu.com/p/52410188ef2e?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation">STL学习笔记之容器（二）</a>
+              <p class="description">vector和string 所有的STL容器都很有用，但是相比于其他容器，vector和string更常用。本章从多个角度覆盖vector和string，如：为什么提倡使用 vector代替数组，怎样改进vector和string的性能？怎样除去过剩的内存，vector 是...</p>
+              <a class="author" target="_blank" href="https://www.jianshu.com/u/b0b3c2042e18?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=seo_notes&amp;utm_source=recommendation">
+                <div class="avatar">
+                  <img src="./C++进阶-STL容器，你看我就够了 - 简书_files/4-3397163ecdb3855a0a4139c34a695885.jpg" alt="48">
+                </div>
+                <span class="name">lintong</span>
+</a>            </div>
+
+            <div class="note have-img">
+              <a class="cover" target="_blank" href="https://www.jianshu.com/p/5870409c02ca?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation">
+                <img src="./C++进阶-STL容器，你看我就够了 - 简书_files/6557804-d008b6b4066b8e2a.png" alt="240">
+</a>              <a class="title" target="_blank" href="https://www.jianshu.com/p/5870409c02ca?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation">C++学习笔记（九）模板与标准模板库（下）</a>
+              <p class="description">1、基本序列式容器 我们以vector、deque和list为例介绍基本序列式容器。我们先来看一个关于vector的例子。 例1： vector可以理解为可以在两端插入、删除数据的数组，它提供了丰富的成员函数，用于操作数据。在本例中我们加入了头文件vector，在使用vec...</p>
+              <a class="author" target="_blank" href="https://www.jianshu.com/u/4557c0acecfc?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=seo_notes&amp;utm_source=recommendation">
+                <div class="avatar">
+                  <img src="./C++进阶-STL容器，你看我就够了 - 简书_files/b1c07cfe-860f-4396-94a2-60ac93792a5e.jpg" alt="48">
+                </div>
+                <span class="name">EchoIR</span>
+</a>            </div>
+
+            <div class="note ">
+                            <a class="title" target="_blank" href="https://www.jianshu.com/p/5dedafcc58c9?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation">夏季莫贪凉 为宝宝防寒二三事</a>
+              <p class="description">[摘要]夏天一到，妈妈们就绞尽脑汁想着怎样给宝宝降温防暑，却忽略了给宝宝防寒。事实上，如果给宝宝降温方式不恰当，宝宝很容易受凉而感冒。所以，各位妈妈也要关注一下如何防寒。 夏季宝宝穿着莫贪凉 糊涂妈：夏天时候，因为不能多给宝宝吹空调和风扇，就会把他的衣服脱掉让他睡觉，这样比...</p>
+              <a class="author" target="_blank" href="https://www.jianshu.com/u/0a41ccbc9fe9?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=seo_notes&amp;utm_source=recommendation">
+                <div class="avatar">
+                  <img src="./C++进阶-STL容器，你看我就够了 - 简书_files/686c6676-3378-4152-acab-9c7e1eca2535.png" alt="48">
+                </div>
+                <span class="name">第6通道</span>
+</a>            </div>
+
+            <div class="note ">
+                            <a class="title" target="_blank" href="https://www.jianshu.com/p/de165ed4f4d1?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation">内容缺乏是关键 消费者用VR究竟能干嘛？</a>
+              <p class="description">今天的VR（虚拟现实），就像2012年的Google Glass一样：没有几个人体验过具体的VR设备，但大家都对其充满了期待，在科技圈VR俨然已成为最新的热门谈资。若跟科技圈人聊天不知道VR是啥，就等着被鄙视吧。 有人说，暴风科技已经成立了暴风魔镜公司，发布了两代魔镜，定价...</p>
+              <a class="author" target="_blank" href="https://www.jianshu.com/u/935ac2ed882f?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=seo_notes&amp;utm_source=recommendation">
+                <div class="avatar">
+                  <img src="./C++进阶-STL容器，你看我就够了 - 简书_files/6fbb9956-b482-4743-9bf4-f7932794f7a8.png" alt="48">
+                </div>
+                <span class="name">叶子ny</span>
+</a>            </div>
+
+            <div class="note ">
+                            <a class="title" target="_blank" href="https://www.jianshu.com/p/5c53767a377b?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation">那个叫长安的地方，未必会有长相思</a>
+              <p class="description">那个叫长安的地方，未必会有长相思。 旅行的时光，亦或是自由的时光永远是短暂的，没有人可以一直享受，我们或多或少的都有自己的顾虑。因为口袋拮据，和时间有限，只好作罢这自由的旅行。回到了属于自己的独立小天地，等待自己的，又是一个没有结果的未知。拍拍身上的灰尘，打扫打扫这颗疲惫的...</p>
+              <a class="author" target="_blank" href="https://www.jianshu.com/u/9d120893404b?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=seo_notes&amp;utm_source=recommendation">
+                <div class="avatar">
+                  <img src="./C++进阶-STL容器，你看我就够了 - 简书_files/1f89ef00c26a" alt="48">
+                </div>
+                <span class="name">9d120893404b</span>
+</a>            </div>
+
+            <div class="note have-img">
+              <a class="cover" target="_blank" href="https://www.jianshu.com/p/faa3ac5ec425?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation">
+                <img src="./C++进阶-STL容器，你看我就够了 - 简书_files/2035150-4709d67cffac7160.jpg" alt="240">
+</a>              <a class="title" target="_blank" href="https://www.jianshu.com/p/faa3ac5ec425?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation">总会遇上对的那个人——神转折大赛</a>
+              <p class="description">某好友，高中时谈了四次恋爱(如果我没记错的话)。还有一次是狠狠的暗恋。加起来算五次了吧？可到最后走进婚姻殿堂的却不是他们的其中一个，还真有点可惜。 先说她暗恋的那个，咱俩刚认识那会，她就喜欢上了学生会的一个帅锅，高高瘦瘦的一个男孩，额头上留着斜刘海，给人有点酷酷又有点腼腆的...</p>
+              <a class="author" target="_blank" href="https://www.jianshu.com/u/fca6d138300d?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=seo_notes&amp;utm_source=recommendation">
+                <div class="avatar">
+                  <img src="./C++进阶-STL容器，你看我就够了 - 简书_files/f71a53c8-ef59-4ac8-b29f-907bc87684a6.jpg" alt="48">
+                </div>
+                <span class="name">牛皮沐子</span>
+</a>            </div>
+
+            <div class="note ">
+                            <a class="title" target="_blank" href="https://www.jianshu.com/p/5bcb126801ab?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation">*Just do it——No.28景行读书会分享</a>
+              <p class="description">圣人为教，无一不重实行。 实行是啥呢，就是——Just do it。 1，如果吃了六个馒头才吃饱了，那是不是只要吃第六个，前五个不吃了？ 不是的，前五个要吃。吃前五个馒头不会觉得饱，别管它，吃就是了。吃着吃着，自然就饱了，量变最终会达到质变。 2，如果目标非常远大，但又很想...</p>
+              <a class="author" target="_blank" href="https://www.jianshu.com/u/8c84c9008394?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=seo_notes&amp;utm_source=recommendation">
+                <div class="avatar">
+                  <img src="./C++进阶-STL容器，你看我就够了 - 简书_files/3a894a1f-d974-48bf-9bdb-6b58281c1317.jpg" alt="48">
+                </div>
+                <span class="name">Larissa</span>
+</a>            </div>
+      </div>
+</div>
+
+    <script type="application/json" data-name="page-data">{"user_signed_in":false,"locale":"zh-CN","os":"windows","read_mode":"day","read_font":"font2","note_show":{"is_author":false,"is_following_author":false,"is_liked_note":false,"follow_state":0,"uuid":"0bb0458b-e330-4fbe-9930-a6c99806a00e"},"note":{"id":17744708,"gupao_eligible":false,"slug":"497843e403b4","user_id":2443267,"notebook_id":17025313,"commentable":true,"likes_count":93,"views_count":7674,"public_wordage":4294,"comments_count":3,"featured_comments_count":0,"total_rewards_count":0,"is_author":false,"paid_type":"free","paid":false,"paid_content_accessible":false,"author":{"nickname":"一月二十三","total_wordage":20373,"followers_count":165,"total_likes_count":276}}}</script>
+    
+    <script src="./C++进阶-STL容器，你看我就够了 - 简书_files/babel-polyfill-d171e3dec4b6c15634dd.js.下载" crossorigin="anonymous"></script>
+    <script src="./C++进阶-STL容器，你看我就够了 - 简书_files/web-base-2ef2605ef1da7d2c7eae.js.下载" crossorigin="anonymous"></script>
+<script src="./C++进阶-STL容器，你看我就够了 - 简书_files/web-7756ace5c6c772af959a.js.下载" crossorigin="anonymous"></script>
+    
+    <script src="./C++进阶-STL容器，你看我就够了 - 简书_files/entry-0abd907c132246fe30b2.js.下载" crossorigin="anonymous"></script>
+    <script>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+  
+
+<!----><!----></body></html>
