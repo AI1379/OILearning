@@ -1,0 +1,83 @@
+#include<bits/stdc++.h>
+using namespace std;
+int W,H,c1,c2,d1,d2,w,h;
+int main()
+{
+	freopen("folding.in","r",stdin);
+	freopen("folding.out","w",stdout);
+	cin>>W>>H>>w>>h;
+	if(w>W&&w>H||h>W&&h>H||(w>W&&h>W)||(w>H&&h>H))
+	{
+	cout<<-1;
+	return 0;
+	}
+	int a=W,b=H;
+	while(1)
+	{
+		if(a<w)
+		{
+			c1=1<<30;
+			break;
+		}
+		if(a==w)break;
+		if(2*w>=a)
+		{
+			c1++;
+			break;
+		}
+		a=a-a/2;
+		c1++;
+	}
+	a=W;
+	while(1)
+	{
+		if(a<h)
+		{
+			c1=1<<30;
+			break;
+		}
+		if(a==h)break;
+		if(2*h>=a)
+		{
+			c2++;
+			break;
+		}
+		a=a-a/2;
+		c2++;
+	}
+	while(1)
+	{
+		if(b<h)
+		{
+			d1=1<<30;
+			break;
+		}
+		if(b==h)break;
+		if(2*h>=b)
+		{
+			d1++;
+			break;
+		}
+		b=b-b/2;
+		d1++;
+	}
+	b=H;
+	while(1)
+	{
+		if(b<w)
+		{
+			d2=1<<30;
+			break;
+		}
+		if(b==w)break;
+		if(2*w>=b)
+		{
+			d2++;
+			break;
+		}
+		b=b-b/2;
+		d2++;
+	}
+	cout<<min(c1+d1,c2+d2);
+	return 0;
+}
