@@ -2,8 +2,6 @@
 using namespace std;
 int main(){
 	long long l,r,t,i,k,x,ans,num;
-	freopen("love.in","r",stdin);
-	freopen("love.out","w",stdout);
 	cin>>t;
 	for(k=0;k<t;k++){
 		cin>>l>>r;
@@ -22,5 +20,6 @@ int main(){
 		}
 		cout<<ans<<endl;
 	}
+	system("pause");
 	return 0;
 }
