@@ -1,0 +1,18 @@
+s,t
+
+f[1..n]=INF/3;
+f[s]=0; p=0;
+
+while (v[t])
+{
+   minx=INF;
+   for (int i=1; i<=n; i++)
+   if (!v[i]&&f[i]<minx) minx=f[i],u=i;
+   v[u]=1; p++;
+   for (int i=head[u]; i; i=edge[i].next)
+   {
+      k=edge[i].to;
+      if (f[u]+edge[i].dis<f[k])
+	f[k]=f[u]+edge[i].dis;
+   }
+}
