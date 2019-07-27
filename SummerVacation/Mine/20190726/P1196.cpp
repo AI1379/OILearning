@@ -12,9 +12,12 @@ void init(int n){
 	return ;
 }
 int root(int x){
-	if(father[x]!=x)
-		father[x]=root(father[x]);
+	int fn;
+	if(father[x]==x)
+		return father[x];
+	fn=root(father[x]);
 	front[x]+=front[father[x]];
+	father[x]=fn;
 	return father[x];
 }
 void merge(int x,int y){
@@ -30,16 +33,16 @@ bool judge(int x,int y){
 	return a==b;
 }
 int main(){
-	int t,m,n,k;
+	int t,m,n;
 	char opt;
 	init(30000);
 	cin>>t;
-	for(k=1;k<=t;k++){
+	while(t--){
 		cin>>opt>>m>>n;
 		if(opt=='M'){
 			merge(n,m);
 		}
-		else{
+		else if(opt=='C'){
 			if(judge(m,n)){
 				cout<<abs(front[m]-front[n])-1<<endl;
 			}
@@ -48,5 +51,6 @@ int main(){
 			}
 		}
 	}
+	system("pause");
 	return 0;
 }
