@@ -2,7 +2,7 @@
 #include<cstdlib>
 using namespace std;
 int main(){
-    cout<<"Helloworld";
+    cout<<"Hello,world!";
     system("pause");
-    return 0;
+    return 0;    
 }
