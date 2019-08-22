@@ -34,7 +34,8 @@
 #**/~$*.pptx
 #**/~$*.xlsx
 
-.vscode/**.**
+.vscode/
+.idea/
 
 ~$**.**
 
