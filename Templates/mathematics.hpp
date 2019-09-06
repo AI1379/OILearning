@@ -18,6 +18,8 @@
 #endif
 using namespace std;
 
+#ifndef MATHEMATICA
+#define MATHEMATICA
 //Part I: Constant & Variable
 const int MaxLength=100;
 const int Infinity=2147483647;//MaxInt
@@ -344,3 +346,5 @@ class IrrationalNumber{
 //class {
 
 //};
+
+#endif
