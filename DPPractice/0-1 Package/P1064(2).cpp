@@ -6,7 +6,7 @@ const int maxm=4900;
 int f[maxm][maxn],w[maxn],c[maxn],tmpw[maxm],tmpc[maxm],ai[maxm],n,m,tmpm,tmpk,times;
 bool vis[maxm][maxm];
 int main(){
-	int i,j,k,p,q,x,y,z;
+	int i,j,k,p,q,r,x,y,z;
 	cin>>n>>m;
 	tmpm=m;
 	freopen("out.txt","w",stdout);
@@ -69,20 +69,32 @@ int main(){
 					times++;
 					if(times==1){
 						tmpk=k;
-						x=f[i-1][j];//选k(不选i)
+						x=f[i-1][j-c[k]]+w[k];//选k(不选i)
 						y=f[i-1][j+c[k]-c[i]]+w[i]-w[k];//选i
-						f[i][j]=max(x,y);
+						z=f[i-2][j+c[k]]-w[k];//啥都不选
+						f[i][j]=max(x,max(y,z));
 					}
 					else{
-						x=f[i-1][j+c[tmpk]+c[k]-c[i]]+w[i]-w[k]-w[tmpk];//选i
-						y=f[i-1][j+c[tmpk]]-w[tmpk];//选k
-						z=f[i-1][j+c[k]]-w[k];//选tmpk
-						f[i][j]=max(x,max(y,z));
+						//i,k,tmpk,k+1
+						x=f[i-3][j+c[tmpk]+c[k]+c[k+1]-c[i]]+w[i]-w[k+1]-w[k]-w[tmpk];//选i
+						y=f[i-3][j+c[tmpk]+c[k+1]-c[k]]-w[tmpk]-w[k+1]+w[k];//选k
+						z=f[i-3][j+c[k]+c[k+1]-c[tmpk]]-w[k]-w[k+1]+w[tmpk];//选tmpk
+						p=f[i-3][j+c[tmpk]+c[k]-c[k+1]]-w[tmpk]-w[k]+w[k+1];//k+1
+						q=f[i-4][j+c[tmpk]+c[k]+c[k+1]]-w[k]-w[tmpk]-w[k+1];//none
+						f[i][j]=max(x,max(y,max(z,max(p,q))));
+						break;
 					}
 				}
 			}
 			if(times==0)
 				f[i][j]=max(f[i-1][j],f[i-1][j-c[i]]+w[i]);
+//			else if(times==1){
+//				f[i][j]=max(f[i-1][j+c[tmpk]-c[i]]-w[tmpk]+w[i],max(f[i-1][j],f[i-2][j+c[tmpk]]-w[tmpk]));
+//			}
+//			else{
+//				可选: i,k,tmpk,k+1,none
+//				f[i][j]=max(f[i-4][j+c[k]+c[tmpk]+c[k+1]],max(f[i-3][j+c[k]+c[tmpk]+c[k+1]-c[i]]-w[k]-w[tmpk]-w[k+1]+w[i],max(f[i-3][j+c[tmpk]+c[k+1]-c[k]]-w[tmpk]-w[k+1]+w[k],max(f[i-3][j+c[k]+c[k+1]-c[tmpk]]-w[k]-w[k+1]+w[tmpk],f[i-3][j+c[tmpk]+c[k]-c[k+1]]-w[tmpk]-w[k]+w[k+1]))));
+//			}
 			#if DEBUG
 			cout<<f[i][j]<<' ';
 			#endif
