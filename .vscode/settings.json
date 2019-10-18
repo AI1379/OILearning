@@ -1,4 +1,10 @@
 {
     "C_Cpp.errorSquiggles": "Disabled",
-    "cmake.configureOnOpen": false
+    "cmake.configureOnOpen": false,
+    "files.associations": {
+        "iostream": "cpp",
+        "istream": "cpp"
+    },
+    "licenser.author": "Listener 1379",
+    "licenser.projectName": "OILearning"
 }
