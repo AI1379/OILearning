@@ -3,7 +3,8 @@
     "cmake.configureOnOpen": false,
     "files.associations": {
         "iostream": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "ostream": "cpp"
     },
     "licenser.author": "Listener 1379",
     "licenser.projectName": "OILearning"
