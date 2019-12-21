@@ -1,5 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
+struct node{
+    int weight;
+    int to;
+}
+vector<node>lst[100001];
 int mp[10000][10000],dis[100000];
 bool vis[100000];
 int m,n,q;
@@ -14,8 +19,14 @@ void DFS(int vex){
     }
     return ;
 }
+void dfs(int vex){
+    vis[vex]=true;
+    int i,length;
+    length=lst[i].size();
+}
 int main(){
     int i,j,x,y,v;
+    node tmp;
     cin>>n>>m>>q;
     for(i=0;i<=n;i++){
         for(j=0;j<=n;j++){
@@ -24,8 +35,11 @@ int main(){
     }
     for(i=0;i<m;i++){
         cin>>x>>y>>v;
-        mp[x-1][y-1]=v;
-        mp[y-1][x-1]=v;
+        tmp.to=y;
+        tmp.weight=v;
+        lst[x].push_back(tmp);
+        tmp.to=x;
+        lst[y].push_back(tmp);
     }
     memset(dis,0,sizeof(dis));
     DFS(0);
