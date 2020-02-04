@@ -75,5 +75,6 @@
         "valarray": "cpp"
     },
     "licenser.author": "Listener 1379",
-    "licenser.projectName": "OILearning"
+    "licenser.projectName": "OILearning",
+    "git.ignoreLimitWarning": true
 }

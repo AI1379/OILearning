@@ -25,7 +25,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
+                "${fileDirname}/${fileBasenameNoExtension}.o",
                 "-O2",
                 "-Wall",
                 "-Wextra"
