@@ -3,38 +3,71 @@ using namespace std;
 struct product
 {
     int a, b;
-    int index;
 };
-bool cmp(product x, product y)
-{
-    return x.a + max(y.a, x.b) + y.b < y.a + max(x.a, y.b) + x.b;
-}
 product lst[1000];
-int n, ans = 0;
+bool vis[1000];
+int n;
+int q[1000];
 int main()
 {
-    int i;
+    int ka, kb, i, j, mina, minb, l, r, ta = 0, tb = 0, ans;
+    memset(vis, false, sizeof(vis));
     cin >> n;
     for (i = 0; i < n; i++)
     {
-        lst[i].index = i;
         cin >> lst[i].a;
     }
     for (i = 0; i < n; i++)
     {
         cin >> lst[i].b;
     }
-    sort(lst, lst + n, cmp);
-    ans = lst[0].a;
-    for (i = 1; i < n; i++)
+    l = 0;
+    r = n - 1;
+    for (i = 0; i < n; i++)
     {
-        ans += max(lst[i].a, lst[i - 1].b);
+        mina = 1 << 30;
+        minb = 1 << 30;
+        for (j = 0; j < n; j++)
+        {
+            if (lst[j].a < mina && !vis[j])
+            {
+                ka = j;
+                mina = lst[j].a;
+            }
+            if (lst[j].b < minb && !vis[j])
+            {
+                kb = j;
+                minb = lst[j].b;
+            }
+        }
+        if (mina < minb)
+        {
+            q[l++] = ka;
+            vis[ka] = true;
+        }
+        else
+        {
+            q[r--] = kb;
+            vis[kb] = true;
+        }
     }
-    ans += lst[n - 1].b;
+    for (i = 0; i <= n; i++)
+    {
+        if (i < n)
+            ta += lst[q[i]].a;
+        if (i > 0)
+            tb = max(tb + lst[q[i - 1]].b, ta);
+        else
+            tb = ta;
+    }
+    ans = max(ta, tb);
     cout << ans << endl;
     for (i = 0; i < n; i++)
     {
-        cout << lst[i].index << ' ';
+        cout << q[i] + 1 << ' ';
     }
+#ifdef DEBUG
+    system("pause");
+#endif // DEBUG
     return 0;
 }
