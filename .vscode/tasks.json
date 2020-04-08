@@ -11,7 +11,9 @@
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "-O2",
                 "-Wall",
-                "-Wextra"
+                "-Wextra",
+                "-D",
+                "DEBUG"
             ],
             "options": {
                 "cwd": "C:\\MinGW\\bin"
@@ -28,7 +30,9 @@
                 "${fileDirname}/${fileBasenameNoExtension}.o",
                 "-O2",
                 "-Wall",
-                "-Wextra"
+                "-Wextra",
+                "-D",
+                "DEBUG"
             ],
             "options": {
                 "cwd": ""
