@@ -1,41 +1,41 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int dx[8]={1,2,-1,-2,1,2,-1,-2};
-const int dy[8]={2,1,-2,-1,-2,-1,2,1};
-struct positive{
-  int x,y;
+struct pos{
+	int x,y,level;
 };
+int dx[8]={1,1,2,2,-1,-1,-2,-2};
+int dy[8]={2,-2,1,-1,2,-2,1,-1};
 int m,n;
-int ans[400][400];
-bool visited[400][400];
-queue <positive> q;
+int mp[401][401];
+queue<pos>q;
+bool judge(pos in){
+	return 1<=in.x&&in.x<=n&&1<=in.y&&in.y<=m;
+}
 int main(){
-  positive tmp;
-  int i,j;
-  cin>>n>>m>>tmp.x>>tmp.y;
-  memset(visited,false,sizeof(visited));
-  memset(ans,-1,sizeof(ans));
-  visited[tmp.x][tmp.y]=true;
-  ans[tmp.x][tmp.y]=0;
-  q.push(tmp);
-  while(!q.empty()){
-    for(i=0;i<8;i++){
-      for(j=0;j<8;j++){
-        tmp.x=q.front().x+dx[i];tmp.y=q.front().y+dy[j];
-        if(!visited[tmp.x][tmp.y]&&((0<=tmp.x&&tmp.x<n)&&(0<=tmp.y&&tmp.y<m))){
-          visited[tmp.x][tmp.y]=true;
-          ans[tmp.x][tmp.y]=ans[q.front().x][q.front().y]+1;
-          q.push(tmp);
-        }
-      }
-    }
-    q.pop();
-  }
-  for(i=0;i<n;i++){
-    for(j=0;j<m;j++){
-      cout<<left<<setw(5)<<ans[i][j];
-    }
-    cout<<endl;
-  }
-  return 0;
+	int x,y,i,j,ans=0;
+	pos tmp,head;
+	cin>>n>>m>>x>>y;
+	memset(mp,-1,sizeof(mp));
+	mp[x][y]=0;
+	tmp.x=x;tmp.y=y;tmp.level=0;
+	q.push(tmp);
+	while(!q.empty()){
+		head=q.front();
+		for(i=0;i<8;i++){
+			tmp.x=head.x+dx[i];tmp.y=head.y+dy[i];
+			if(mp[tmp.x][tmp.y]==-1&&judge(tmp)){
+				tmp.level=head.level+1;
+				q.push(tmp);
+				mp[tmp.x][tmp.y]=tmp.level;
+			}
+		}
+		q.pop();
+	}
+	for(i=1;i<=n;i++){
+		for(j=1;j<=m;j++){
+			printf("%-5d",mp[i][j]);
+		}
+		cout<<endl;
+	}
+	return 0;
 }
